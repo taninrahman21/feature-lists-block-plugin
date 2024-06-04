@@ -1,0 +1,224 @@
+# Copyright (C) 2024 bPlugins LLC
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: B Feature Lists 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/b-feature-lists\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-06-02T11:06:46+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: b-feature-lists\n"
+
+#. Plugin Name of the plugin
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
+msgid "B Feature Lists"
+msgstr ""
+
+#. Description of the plugin
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
+msgid "Description of the B Feature Lists."
+msgstr ""
+
+#. Author of the plugin
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
+msgid "bPlugins LLC"
+msgstr ""
+
+#. Author URI of the plugin
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
+msgid "http://bplugins.com"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18017
+#: dist/editor.js:18031
+#: dist/editor.js:19333
+msgid "Space Between Item"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18159
+#: dist/editor.js:18522
+msgid "Title"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18170
+msgid "description"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18215
+#: dist/editor.js:18724
+#: dist/editor.js:18861
+#: dist/editor.js:19346
+msgid "Background Color"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18227
+#: dist/editor.js:19219
+msgid "Hover Background Color"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18294
+msgid "Add New Feature"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18302
+msgid "Title HTML Tag"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18320
+msgid "Icon Shape"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18378
+#: dist/editor.js:18432
+msgid "Connector Line Color"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18388
+#: dist/editor.js:18442
+msgid "Connector Line Width"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18491
+msgid "Description"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18494
+#: dist/editor.js:18540
+msgid "Color"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18501
+#: dist/editor.js:18554
+msgid "Typography"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18527
+msgid "Title Bottom Space"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18547
+msgid "Hover Color"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18733
+msgid "Background Transition"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18743
+#: dist/editor.js:18870
+msgid "Border Style"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18766
+#: dist/editor.js:18893
+msgid "Border Color"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18774
+#: dist/editor.js:18901
+msgid "Border Width"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18790
+msgid "Border Transition"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18804
+#: dist/editor.js:18921
+#: dist/editor.js:19240
+#: dist/editor.js:19374
+msgid "Border Radius"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18815
+msgid "Border Radius Transition"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18825
+#: dist/editor.js:18933
+msgid "Box Shadow"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18832
+msgid "Box Shadow Transition"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18960
+msgid "Content Box"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:18965
+msgid "Padding"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:19208
+msgid "Normal Background Color"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:19233
+#: dist/editor.js:19366
+msgid "Border"
+msgstr ""
+
+#: inc/block.json
+msgctxt "block title"
+msgid "B Feature Lists"
+msgstr ""
+
+#: inc/block.json
+msgctxt "block description"
+msgid "Description of B Feature Lists."
+msgstr ""
+
+#: inc/block.json
+msgctxt "block keyword"
+msgid "hello"
+msgstr ""
+
+#: inc/block.json
+msgctxt "block keyword"
+msgid "block"
+msgstr ""
+
+#: inc/block.json
+msgctxt "block keyword"
+msgid "feature lists"
+msgstr ""
+
+#: inc/block.json
+msgctxt "block keyword"
+msgid "features table"
+msgstr ""

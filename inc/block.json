@@ -1,0 +1,207 @@
+{
+  "apiVersion": "1",
+  "name": "bfl/b-feature-lists",
+  "title": "B Feature Lists",
+  "description": "The Feature Lists WordPress Block Plugin lets you create stunning, customizable feature lists with icons, titles, and descriptions.",
+  "category": "widgets",
+  "keywords": [
+    "hello",
+    "block",
+    "feature lists",
+    "features table"
+  ],
+  "textdomain": "b-feature-lists",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    },
+    "cId": {
+      "type": "string",
+      "default": ""
+    },
+    "content": {
+      "type": "string",
+      "default": "Lorem text should be replaced with real text"
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "icon": {
+            "type": "icon",
+            "url": "http://localhost/tanin-wp/wp-content/uploads/2024/04/favicon.svg",
+            "width": "",
+            "bgColor": "",
+            "hoverBg": ""
+          },
+          "title": {
+            "text": "Feature Item 1",
+            "link": "",
+            "openNewTab": false
+          },
+          "description": "Description of B Feature Lists Content."
+        },
+        {
+          "icon": {
+            "type": "icon",
+            "url": "http://localhost/tanin-wp/wp-content/uploads/2024/04/favicon.svg",
+            "width": "",
+            "bgColor": "",
+            "hoverBg": ""
+          },
+          "title": {
+            "text": "Feature Item 2",
+            "link": "",
+            "openNewTab": false
+          },
+          "description": "Description of B Feature Lists Content."
+        }
+      ]
+    },
+    "valueForEachItem": {
+      "type": "object",
+      "default": {
+        "titleTag": "H3",
+        "iconShape": "square",
+        "iconPosition": "left",
+        "iconVerticallyCenter": true,
+        "showConnectorLine": false,
+        "connectorLineColor": "red",
+        "connectorLineWidth": 1,
+        "useInlineFeatures": false,
+        "itemsPerLine": { "desktop": 3, "tablet": 2, "mobile": 1 },
+        "gapBetweenItem": { "desktop": 20, "tablet": 20, "mobile": 20 }
+      }
+    },
+    "itemStyles": {
+      "type": "object",
+      "default": {
+        "padding": {
+          "desktop": {
+            "top": "10px",
+            "right": "10px",
+            "bottom": "10px",
+            "left": "10px"
+          },
+          "tablet": {
+            "top": "10px",
+            "right": "10px",
+            "bottom": "10px",
+            "left": "10px"
+          },
+          "mobile": {
+            "top": "10px",
+            "right": "10px",
+            "bottom": "10px",
+            "left": "10px"
+          }
+        },
+        "spaceBetweenItem": { "desktop": 16, "tablet": 16, "mobile": 16 },
+        "addBorder": true,
+        "border": {
+          "width": "0px",
+          "style": "solid",
+          "color": "rgba(0, 0, 0, 0.1)"
+        },
+        "borderRadius": 10,
+        "backgroundColor": { "color": "yellowgreen" }
+      }
+    },
+    "iconStyle": {
+      "type": "object",
+      "default": {
+        "backgroundFor": "",
+        "normalBackground": { "color": "transparent" },
+        "hoverBackground": { "color": "" },
+        "iconDivSize": { "desktop": 35, "tablet": 35, "mobile": 35 },
+        "iconSize": { "desktop": 25, "tablet": 25, "mobile": 25 },
+        "padding": {
+          "desktop": {
+            "top": "10px",
+            "right": "10px",
+            "bottom": "10px",
+            "left": "10px"
+          },
+          "tablet": {
+            "top": "10px",
+            "right": "10px",
+            "bottom": "10px",
+            "left": "10px"
+          },
+          "mobile": {
+            "top": "10px",
+            "right": "10px",
+            "bottom": "10px",
+            "left": "10px"
+          }
+        },
+        "spaceFromContent": { "desktop": 10, "tablet": 10, "mobile": 10 },
+        "border": {
+          "width": "4px",
+          "style": "solid",
+          "color": "orange"
+        },
+        "borderRadius": 0
+      }
+    },
+    "title": {
+      "type": "object",
+      "default": {
+        "bottomSpace": { "desktop": 0, "tablet": 0, "mobile": 0 },
+        "color": "black",
+        "hoverColor": "",
+        "typo": { "fontSize": 25 }
+      }
+    },
+    "description": {
+      "type": "object",
+      "default": {
+        "color": "gray",
+        "typo": { "fontSize": 16 }
+      }
+    },
+    "contentBox": {
+      "type": "object",
+      "default": {
+        "contentBoxStyleFor": "",
+        "normalBackground": { "color": "" },
+        "hoverBackground": { "color": "" },
+        "hoverBorder": {
+          "width": { "desktop": {}, "tablet": {}, "mobile": {} },
+          "style": "none",
+          "color": "none"
+        },
+        "normalBorder": {
+          "width": { "desktop": {}, "tablet": {}, "mobile": {} },
+          "style": "none",
+          "color": ""
+        },
+        "normalBorderRadius": { "desktop": {}, "tablet": {}, "mobile": {}},
+        "hoverBorderRadius": { "desktop": {}, "tablet": {}, "mobile": {} },
+        "backgroundTransition": 0,
+        "borderTransition": 0,
+        "borderRadiusTransition": 0,
+        "padding": { "desktop": {}, "tablet": {}, "mobile": {} },
+        "boxShadowNormal": {},
+        "boxShadowHover": {},
+        "boxShadowTransition": 0
+      }
+    }
+  },
+  "supports": {
+    "align": ["wide", "full"],
+    "html": false
+  },
+  "example": {
+    "attributes": {
+      "preview": true,
+      "columns": {
+        "desktop": 1,
+        "tablet": 1,
+        "mobile": 1
+      }
+    }
+  },
+  "editorScript": "file:./../dist/editor.js"
+}

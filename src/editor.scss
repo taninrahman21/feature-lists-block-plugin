@@ -1,0 +1,191 @@
+// BFeatureLists Styles
+.feature-item {
+  display: flex;
+  position: relative;
+}
+
+.feature-icon {
+  background: orange;
+  position: relative;
+  z-index: 999;
+}
+
+.feature-content {
+  margin-left: 10px;
+  width: 75%;
+}
+.feature-content p {
+  margin: 0;
+}
+
+.feature-content .title,
+.feature-icon h2 {
+  padding: 0;
+  margin: 0;
+}
+.line {
+  width: 1px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+// Content CSS Starts Here
+.icon-tab .my-tab-panel .components-tab-panel__tabs {
+  display: flex;
+  justify-content: space-between;
+}
+.icon-tab .components-button.components-tab-panel__tabs-item {
+  font-size: 16px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+}
+.icon-tab .components-button.components-tab-panel__tabs-item.active-tab {
+  background-color: #635bbc;
+  color: #ffffff;
+}
+
+.feature {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.feature .title {
+  margin: 0;
+  padding-left: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+.feature .icons {
+  width: fit-content;
+}
+.feature .title p {
+  margin: 0;
+}
+.icons button {
+  border-left: 1px solid gray;
+  color: red;
+}
+
+// Icon Tab  and Icon Position Tab Style Starts Here
+.tab-buttons,
+.item-position-tab,
+.background-tab,
+.content-box-style-tab {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.tab-buttons .tab-button,
+.leftAlign-btn,
+.rightAlign-btn,
+.centerAlign-btn,
+.normal-btn,
+.hover-btn {
+  flex: 1;
+  padding: 6px;
+  text-align: center;
+  font-size: 15px;
+}
+.tab-buttons .tab-button:hover,
+.leftAlign-btn:hover,
+.rightAlign-btn:hover,
+.centerAlign-btn:hover,
+.normal-btn:hover,
+.hover-btn:hover {
+  background-color: #635bbc;
+  color: white;
+}
+.leftAlign-btn,
+.centerAlign-btn,
+.normal-btn {
+  border-right: 1px solid #ccc;
+}
+
+.tab-buttons .tab-button.active,
+.leftAlign-btn.activeIconPosition,
+.rightAlign-btn.activeIconPosition,
+.centerAlign-btn.activeIconPosition,
+.normal-btn.activeBackgroundFor,
+.hover-btn.activeBackgroundFor,
+.normal-btn.activeContentBoxStyleFor,
+.hover-btn.activeContentBoxStyleFor {
+  background-color: #635bbc;
+  color: white;
+}
+.tab-content .tab-item,
+.icon-position-tab-content {
+  margin-top: 15px;
+}
+.tab-content .tab-item,
+.icon-position-tab-content .icon-position-tab-item,
+.background-tab-item,
+.content-box-style-tab-item {
+  display: none;
+}
+.tab-content .tab-item.active,
+.icon-position-tab-content .icon-position-tab-item.activeIconPosition,
+.background-tab-item.activeBackgroundFor,
+.content-box-style-tab-item.activeContentBoxStyleFor {
+  display: block;
+}
+// Icon Tab  and Icon Position Tab Style End Here
+
+// Icon Css Starts here
+.icon-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.uploaded-icon {
+  width: 100px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  display: none;
+  cursor: pointer;
+  color: red;
+}
+.icon-container:hover .delete-btn {
+  display: block;
+}
+
+// Settings Css Starts here
+.my-tab-panel .components-tab-panel__tabs {
+  display: flex;
+  justify-content: space-between;
+}
+.components-button.components-tab-panel__tabs-item {
+  font-size: 20px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+}
+.components-button.components-tab-panel__tabs-item.active-tab {
+  background-color: #635bbc;
+  color: #ffffff;
+}
+
+// ToggleControl Style
+.components-form-toggle.is-checked .components-form-toggle__track {
+  background-color: #635bbc;
+  border-color: #635bbc;
+  box-shadow: 0 0 0 var(--wp-admin-border-width-focus) #fff,
+    0 0 0 calc(var(--wp-admin-border-width-focus) * 2) #635bbc;
+}
