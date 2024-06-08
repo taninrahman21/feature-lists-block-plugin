@@ -1,9 +1,9 @@
 import { RichText } from '@wordpress/block-editor';
 import { produce } from 'immer';
 import React from 'react';
-import BFeatureLists from '../../BFeatureLists/BFeatureLists';
+import FeatureLists from '../../FeatureLists/FeatureLists';
 
-const BFeatureListsBack = ({ attributes, setAttributes, setActiveFeature }) => {
+const FeatureListsBack = ({ attributes, setAttributes, setActiveFeature }) => {
   const { items, valueForEachItem } = attributes;
 
   const renderTitleEl = (item, index) => (
@@ -40,7 +40,7 @@ const BFeatureListsBack = ({ attributes, setAttributes, setActiveFeature }) => {
 
   return (
     <div>
-      <BFeatureLists
+      <FeatureLists
         attributes={attributes}
         setActiveFeature={setActiveFeature}
         setAttributes={setAttributes}
@@ -50,4 +50,4 @@ const BFeatureListsBack = ({ attributes, setAttributes, setActiveFeature }) => {
   );
 };
 
-export default BFeatureListsBack;
+export default FeatureListsBack;

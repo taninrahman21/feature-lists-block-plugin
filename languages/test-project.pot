@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: B Feature Lists 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/b-feature-lists\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/feature-lists\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,25 +12,25 @@ msgstr ""
 "POT-Creation-Date: 2024-06-04T06:36:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
-"X-Domain: b-feature-lists\n"
+"X-Domain: feature-lists\n"
 
 #. Plugin Name of the plugin
-#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\feature-lists\feature-lists.php
 msgid "B Feature Lists"
 msgstr ""
 
 #. Description of the plugin
-#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\feature-lists\feature-lists.php
 msgid "The Feature Lists WordPress Block Plugin provides an intuitive and flexible way to showcase features in a visually appealing list format.Designed for ease of use within the Gutenberg editor, this plugin enables users to create and customize feature lists with icons, titles, and descriptions effortlessly."
 msgstr ""
 
 #. Author of the plugin
-#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\feature-lists\feature-lists.php
 msgid "bPlugins LLC"
 msgstr ""
 
 #. Author URI of the plugin
-#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\feature-lists\feature-lists.php
 msgid "http://bplugins.com"
 msgstr ""
 

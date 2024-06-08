@@ -1,11 +1,11 @@
 {
   "apiVersion": "1",
-  "name": "bfl/b-feature-lists",
-  "title": "B Feature Lists",
+  "name": "bfl/feature-lists",
+  "title": "Feature Lists",
   "description": "The Feature Lists WordPress Block Plugin lets you create stunning, customizable feature lists with icons, titles, and descriptions.",
   "category": "widgets",
-  "keywords": ["hello", "block", "feature lists", "features table"],
-  "textdomain": "b-feature-lists",
+  "keywords": ["features", "feature lists", "features table"],
+  "textdomain": "feature-lists",
   "attributes": {
     "align": {
       "type": "string",

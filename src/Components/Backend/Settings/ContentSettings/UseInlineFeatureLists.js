@@ -27,7 +27,7 @@ const UseInlineFeatureLists = compose(withSelect((select) => { return { device: 
         <>
           <div>
             <PanelRow>
-              <Label className='mb5'>{__("Space Between Item", 'b-feature-lists')}</Label>
+              <Label className='mb5'>{__("Space Between Item", 'feature-lists')}</Label>
               <Device />
             </PanelRow>
             <RangeControl
@@ -41,7 +41,7 @@ const UseInlineFeatureLists = compose(withSelect((select) => { return { device: 
 
           <div>
             <PanelRow>
-              <Label className='mb5'>{__("Space Between Item", 'b-feature-lists')}</Label>
+              <Label className='mb5'>{__("Space Between Item", 'feature-lists')}</Label>
               <Device />
             </PanelRow>
             <RangeControl

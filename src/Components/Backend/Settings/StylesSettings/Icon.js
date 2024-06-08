@@ -23,13 +23,13 @@ const Icon = compose(withSelect((select) => { return { device: select("core/edit
       <PanelBody title={__("Icon Styles", "b-features-lists")} initialOpen={false}>
         {/* SVG Icon Color */}
         <BColor
-          label={__('Icon Color', 'b-feature-lists')}
+          label={__('Icon Color', 'feature-lists')}
           value={iconStyle.iconColor}
           onChange={value => setAttributes({ iconStyle: updateData(iconStyle, value, "iconColor") })}
           defaultColor='null' />
         {/* Hover Icon Color */}
         <BColor
-          label={__('Hover Icon Color', 'b-feature-lists')}
+          label={__('Hover Icon Color', 'feature-lists')}
           value={iconStyle.iconColorHover}
           onChange={value => setAttributes({ iconStyle: updateData(iconStyle, value, "iconColorHover") })}
           defaultColor='null' />
@@ -52,7 +52,7 @@ const Icon = compose(withSelect((select) => { return { device: select("core/edit
             {/* Normal Background Content */}
             <div className={`background-tab-item ${iconStyle.backgroundFor === 'normal' ? 'activeBackgroundFor' : ''}`}>
               <Background
-                label={__('Normal Background Color', 'b-feature-lists')}
+                label={__('Normal Background Color', 'feature-lists')}
                 value={iconStyle.normalBackground}
                 onChange={val => setAttributes({ iconStyle: updateData(iconStyle, val, "normalBackground") })}
                 defaults={{ color: '#000' }}
@@ -63,7 +63,7 @@ const Icon = compose(withSelect((select) => { return { device: select("core/edit
             {/* Hover Background Content */}
             <div className={`background-tab-item ${iconStyle.backgroundFor === 'hover' ? 'activeBackgroundFor' : ''}`}>
               <Background
-                label={__('Hover Background Color', 'b-feature-lists')}
+                label={__('Hover Background Color', 'feature-lists')}
                 value={iconStyle.hoverBackground}
                 onChange={val => setAttributes({ iconStyle: updateData(iconStyle, val, "hoverBackground") })}
                 defaults={{ color: '#000' }}
@@ -77,14 +77,14 @@ const Icon = compose(withSelect((select) => { return { device: select("core/edit
         {/* Icon Div Border */}
         <div style={{ margin: "15px 0" }} >
           <BorderControl
-            label={__("Border", "b-feature-lists")}
+            label={__("Border", "feature-lists")}
             colors={colors}
             onChange={value => setAttributes({ iconStyle: updateData(iconStyle, value, "border") })}
             value={iconStyle.border}
           />
           <div style={{ margin: "10px 0" }}>
             <RangeControl
-              label={__("Border Radius", "b-feature-lists")}
+              label={__("Border Radius", "feature-lists")}
               value={iconStyle.borderRadius}
               onChange={value => setAttributes({ iconStyle: updateData(iconStyle, value, "borderRadius") })}
             />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BFeatureLists from '../BFeatureLists/BFeatureLists';
+import FeatureLists from '../FeatureLists/FeatureLists';
 
 const Frontend = ({ attributes }) => {
   const { valueForEachItem } = attributes;
@@ -36,7 +36,7 @@ const Frontend = ({ attributes }) => {
 
   return (
     <div>
-      <BFeatureLists
+      <FeatureLists
         attributes={attributes}
         setActiveFeature={setActiveFeature}
         titleElement={(item) => renderTitleEl(item)}

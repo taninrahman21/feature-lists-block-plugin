@@ -1,4 +1,6 @@
 import { __experimentalBorderControl as BorderControl, PanelBody, PanelRow, RangeControl, ToggleControl } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { Background, Label } from '../../../../../../Components';
@@ -6,8 +8,6 @@ import { BBoxControl } from '../../../../../../Components/BBoxControl/BBoxContro
 import { Device } from '../../../../../../Components/Device/Device';
 import '../../../../editor.scss';
 import { updateData } from '../../../../utils/functions';
-import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
 
 const Item = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { itemStyles, valueForEachItem } = attributes;
@@ -24,7 +24,7 @@ const Item = compose(withSelect((select) => { return { device: select("core/edit
         {
           valueForEachItem.useInlineFeatures || <div>
             <PanelRow>
-              <Label className='mb5'>{__("Space Between Item", 'b-feature-lists')}</Label>
+              <Label className='mb5'>{__("Space Between Item", 'feature-lists')}</Label>
               <Device />
             </PanelRow>
             <RangeControl
@@ -38,7 +38,7 @@ const Item = compose(withSelect((select) => { return { device: select("core/edit
 
         {/* Background Color */}
         <Background
-          label={__('Background Color', 'b-feature-lists')}
+          label={__('Background Color', 'feature-lists')}
           value={itemStyles.backgroundColor}
           onChange={val => setAttributes({ itemStyles: updateData(itemStyles, val, "backgroundColor") })}
           defaults={{ color: '#000' }}
@@ -58,7 +58,7 @@ const Item = compose(withSelect((select) => { return { device: select("core/edit
           itemStyles.addBorder && (
             <div>
               <BorderControl
-                label={__("Border", "b-feature-lists")}
+                label={__("Border", "feature-lists")}
                 colors={colors}
                 onChange={value => setAttributes({ itemStyles: updateData(itemStyles, value, "border") })}
                 value={itemStyles.border}
@@ -66,7 +66,7 @@ const Item = compose(withSelect((select) => { return { device: select("core/edit
               <div
                 style={{ marginTop: "10px" }}>
                 <RangeControl
-                  label={__("Border Radius", "b-feature-lists")}
+                  label={__("Border Radius", "feature-lists")}
                   value={itemStyles.borderRadius}
                   onChange={value => setAttributes({ itemStyles: updateData(itemStyles, value, "borderRadius") })}
                 />

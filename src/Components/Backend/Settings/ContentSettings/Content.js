@@ -86,7 +86,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
                     <div>
                       {/* Title Text */}
                       <TextControl
-                        label={__("Title", "b-feature-lists")}
+                        label={__("Title", "feature-lists")}
                         value={item.title.text}
                         onChange={(value) => {
                           const newItems = produce(items, draft => {
@@ -97,7 +97,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
                       />
                       {/* Description Text */}
                       <TextareaControl
-                        label={__("description", "b-feature-lists")}
+                        label={__("description", "feature-lists")}
                         value={item.description}
                         onChange={(value) => {
                           const newItems = produce(items, draft => {
@@ -161,7 +161,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
 
                           {/* Icon Color */}
                           <BColor
-                            label={__('Icon Color', 'b-feature-lists')}
+                            label={__('Icon Color', 'feature-lists')}
                             value={item.icon.iconColor}
                             onChange={value => {
                               const newItems = produce(items, draft => {
@@ -173,7 +173,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
 
                           {/* Background Color */}
                           <BColor
-                            label={__('Background Color', 'b-feature-lists')}
+                            label={__('Background Color', 'feature-lists')}
                             value={item.icon.bgColor}
                             onChange={value => {
                               const newItems = produce(items, draft => {
@@ -185,7 +185,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
 
                           {/* Hover Background Color */}
                           <BColor
-                            label={__('Hover Background Color', 'b-feature-lists')}
+                            label={__('Hover Background Color', 'feature-lists')}
                             value={item.icon.hoverBg}
                             onChange={value => {
                               const newItems = produce(items, draft => {
@@ -202,7 +202,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
 
                           {/* Background Color */}
                           <BColor
-                            label={__('Background Color', 'b-feature-lists')}
+                            label={__('Background Color', 'feature-lists')}
                             value={item.icon.bgColor}
                             onChange={value => {
                               const newItems = produce(items, draft => {
@@ -214,7 +214,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
 
                           {/* Hover Background Color */}
                           <BColor
-                            label={__('Hover Background Color', 'b-feature-lists')}
+                            label={__('Hover Background Color', 'feature-lists')}
                             value={item.icon.hoverBg}
                             onChange={value => {
                               const newItems = produce(items, draft => {
@@ -280,7 +280,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
           variant="primary"
           onClick={addItem}
         >
-          {__("Add New Feature", "b-feature-lists")}
+          {__("Add New Feature", "feature-lists")}
         </Button>
 
         <hr />
@@ -288,7 +288,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
 
         {/* Title HTML Tag */}
         <SelectControl
-          label={__("Title HTML Tag", "b-feature-lists")}
+          label={__("Title HTML Tag", "feature-lists")}
           value={valueForEachItem.titleTag}
           options={[
             { label: 'H1', value: 'H1' },
@@ -320,7 +320,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
         {
           valueForEachItem.showIcon &&
           < SelectControl
-            label={__("Icon Shape", "b-feature-lists")}
+            label={__("Icon Shape", "feature-lists")}
             value={valueForEachItem.iconShape}
             options={[
               { label: 'None', value: 'none' },
@@ -381,7 +381,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
                         {
                           valueForEachItem.showConnectorLine && <div style={{ margin: "10px 0" }}>
                             <BColor
-                              label={__('Connector Line Color', 'b-feature-lists')}
+                              label={__('Connector Line Color', 'feature-lists')}
                               value={valueForEachItem.connectorLineColor}
                               onChange={value => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineColor") })}
                               defaultColor='#000' />
@@ -391,7 +391,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
                         {
                           valueForEachItem.showConnectorLine && <div>
                             <RangeControl
-                              label={__("Connector Line Width", "b-feature-lists")}
+                              label={__("Connector Line Width", "feature-lists")}
                               value={valueForEachItem.connectorLineWidth}
                               onChange={(value) => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineWidth") })}
                               min={1}
@@ -435,7 +435,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
                         {
                           valueForEachItem.showConnectorLine && <div style={{ margin: "10px 0" }}>
                             <BColor
-                              label={__('Connector Line Color', 'b-feature-lists')}
+                              label={__('Connector Line Color', 'feature-lists')}
                               value={valueForEachItem.connectorLineColor}
                               onChange={value => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineColor") })}
                               defaultColor='#000' />
@@ -445,7 +445,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
                         {
                           valueForEachItem.showConnectorLine && <div>
                             <RangeControl
-                              label={__("Connector Line Width", "b-feature-lists")}
+                              label={__("Connector Line Width", "feature-lists")}
                               value={valueForEachItem.connectorLineWidth}
                               onChange={(value) => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineWidth") })}
                               min={1}
@@ -458,7 +458,7 @@ const Content = ({ attributes, setAttributes, activeFeature }) => {
                   }
 
 
-                  <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes}/>
+                  <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes} />
                 </div>
 
 

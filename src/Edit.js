@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import BFeatureListsBack from './Components/Backend/BFeatureListsBack/BFeatureListsBack';
+import FeatureListsBack from './Components/Backend/FeatureListsBack/FeatureListsBack';
 import Settings from './Components/Backend/Settings/Settings';
 
 
@@ -13,7 +13,7 @@ const Edit = props => {
 	return (
 		<>
 			<Settings attributes={attributes} setAttributes={setAttributes} activeFeature={activeFeature} />
-			<BFeatureListsBack attributes={attributes} setAttributes={setAttributes} setActiveFeature={setActiveFeature} />
+			<FeatureListsBack attributes={attributes} setAttributes={setAttributes} setActiveFeature={setActiveFeature} />
 		</>
 	)
 };

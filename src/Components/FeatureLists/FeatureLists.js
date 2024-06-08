@@ -3,7 +3,7 @@ import SVG from 'react-inlinesvg';
 import '../../editor.scss';
 import Styles from '../Common/Styles';
 
-const BFeatureLists = ({ attributes, titleElement, descriptionEl, setActiveFeature }) => {
+const FeatureLists = ({ attributes, titleElement, descriptionEl, setActiveFeature }) => {
   const { cId, items } = attributes;
 
 
@@ -62,4 +62,4 @@ const BFeatureLists = ({ attributes, titleElement, descriptionEl, setActiveFeatu
   );
 };
 
-export default BFeatureLists;
+export default FeatureLists;

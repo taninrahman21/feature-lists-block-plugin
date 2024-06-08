@@ -1,4 +1,6 @@
 import { PanelRow, RangeControl, SelectControl } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { produce } from 'immer';
 import React from 'react';
@@ -6,8 +8,6 @@ import { BColor, Background, Label, ShadowControl } from '../../../../../../Comp
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
 import { BBoxControl } from '../../../Panel/BBoxControl/BBoxControl';
-import { withSelect } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
 
 const HoverContentBoxStyles = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { contentBox } = attributes;
@@ -16,7 +16,7 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
     <div>
       {/* Background Color */}
       <Background
-        label={__('Background Color', 'b-feature-lists')}
+        label={__('Background Color', 'feature-lists')}
         value={contentBox.hoverBackground}
         onChange={val => setAttributes({ contentBox: updateData(contentBox, val, "hoverBackground") })}
         defaults={{ color: '#000' }}
@@ -25,7 +25,7 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
 
       {/* Background Transition  */}
       <RangeControl
-        label={__("Background Transition", "b-feature-lists")}
+        label={__("Background Transition", "feature-lists")}
         value={contentBox.backgroundTransition}
         onChange={value => setAttributes({ contentBox: updateData(contentBox, value, "backgroundTransition") })}
         min={0}
@@ -35,7 +35,7 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
 
       {/* Border Style */}
       <SelectControl
-        label={__("Border Style", "b-feature-lists")}
+        label={__("Border Style", "feature-lists")}
         value={contentBox.hoverBorder.style}
         options={[
           { label: 'None', value: 'none' },
@@ -58,7 +58,7 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
           <>
             {/* Border Color */}
             <BColor
-              label={__('Border Color', 'b-feature-lists')}
+              label={__('Border Color', 'feature-lists')}
               value={contentBox.hoverBorder.color}
               onChange={value => setAttributes({ contentBox: updateData(contentBox, value, "hoverBorder", "color") })}
               defaultColor='null' />
@@ -66,7 +66,7 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
             {/* Border Width */}
             <div style={{ marginTop: "10px" }}>
               <PanelRow>
-                <Label className='mb5'>{__("Border Width", 'b-feature-lists')}</Label>
+                <Label className='mb5'>{__("Border Width", 'feature-lists')}</Label>
                 <Device />
               </PanelRow>
               <BBoxControl
@@ -82,7 +82,7 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
 
             {/* Border Transition  */}
             <RangeControl
-              label={__("Border Transition", "b-feature-lists")}
+              label={__("Border Transition", "feature-lists")}
               value={contentBox.borderTransition}
               onChange={value => setAttributes({ contentBox: updateData(contentBox, value, "borderTransition") })}
               min={0}
@@ -96,7 +96,7 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
 
       <div style={{ marginTop: "10px" }}>
         <PanelRow>
-          <Label className='mb5'>{__("Border Radius", 'b-feature-lists')}</Label>
+          <Label className='mb5'>{__("Border Radius", 'feature-lists')}</Label>
           <Device />
         </PanelRow>
         <BBoxControl
@@ -107,7 +107,7 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
 
       {/* Border Radius Transition  */}
       <RangeControl
-        label={__("Border Radius Transition", "b-feature-lists")}
+        label={__("Border Radius Transition", "feature-lists")}
         value={contentBox.borderRadiusTransition}
         onChange={value => setAttributes({ contentBox: updateData(contentBox, value, "borderRadiusTransition") })}
         min={0}
@@ -117,14 +117,14 @@ const HoverContentBoxStyles = compose(withSelect((select) => { return { device: 
 
       {/* Box Shadow */}
       <ShadowControl
-        label={__("Box Shadow", "b-feature-lists")}
+        label={__("Box Shadow", "feature-lists")}
         value={contentBox.boxShadowNormal}
         onChange={val => setAttributes({ contentBox: updateData(contentBox, val, "boxShadowNormal") })}
       />
 
       {/* Box Shadow Transition  */}
       <RangeControl
-        label={__("Box Shadow Transition", "b-feature-lists")}
+        label={__("Box Shadow Transition", "feature-lists")}
         value={contentBox.boxShadowTransition}
         onChange={value => setAttributes({ contentBox: updateData(contentBox, value, "boxShadowTransition") })}
         min={0}

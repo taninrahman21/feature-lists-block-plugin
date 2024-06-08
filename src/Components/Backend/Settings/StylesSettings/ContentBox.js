@@ -1,32 +1,32 @@
 import { PanelBody, PanelRow } from '@wordpress/components';
-import { __ } from "@wordpress/i18n";
-import React from 'react';
-import '../../../../editor.scss';
-import { updateData } from '../../../../utils/functions';
-import HoverContentBoxStyles from './HoverContentBoxStyles';
-import NormalContentBoxStyles from './NormalContentBoxStyles';
-import { BBoxControl } from '../../../Panel/BBoxControl/BBoxControl';
-import { Label } from '../../../../../../Components';
-import { Device } from '../../../../../../Components/Device/Device';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+import { __ } from "@wordpress/i18n";
+import React from 'react';
+import { Label } from '../../../../../../Components';
+import { Device } from '../../../../../../Components/Device/Device';
+import '../../../../editor.scss';
+import { updateData } from '../../../../utils/functions';
+import { BBoxControl } from '../../../Panel/BBoxControl/BBoxControl';
+import HoverContentBoxStyles from './HoverContentBoxStyles';
+import NormalContentBoxStyles from './NormalContentBoxStyles';
 
 const ContentBox = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { contentBox } = attributes;
 
   return (
     <div>
-      <PanelBody title={__('Content Box', "b-feature-lists")} initialOpen={false}>
+      <PanelBody title={__('Content Box', "feature-lists")} initialOpen={false}>
 
         {/* Content Box Padding */}
         <div style={{ marginTop: "10px" }}>
           <PanelRow>
-            <Label className='mb5'>{__("Padding", 'b-feature-lists')}</Label>
+            <Label className='mb5'>{__("Padding", 'feature-lists')}</Label>
             <Device />
           </PanelRow>
           <BBoxControl
             values={contentBox.padding[device]}
-            onChange={val => setAttributes({contentBox: updateData(contentBox, val, "padding", device)})}
+            onChange={val => setAttributes({ contentBox: updateData(contentBox, val, "padding", device) })}
           />
         </div>
 
@@ -46,12 +46,12 @@ const ContentBox = compose(withSelect((select) => { return { device: select("cor
 
             {/* Normal Background Content */}
             <div className={`content-box-style-tab-item ${contentBox.contentBoxStyleFor === 'normal' ? 'activeContentBoxStyleFor' : ''}`}>
-              <NormalContentBoxStyles attributes={attributes} setAttributes={setAttributes}/>
+              <NormalContentBoxStyles attributes={attributes} setAttributes={setAttributes} />
             </div>
 
             {/* Hover Background Content */}
             <div className={`content-box-style-tab-item ${contentBox.contentBoxStyleFor === 'hover' ? 'activeContentBoxStyleFor' : ''}`}>
-              <HoverContentBoxStyles attributes={attributes} setAttributes={setAttributes}/>
+              <HoverContentBoxStyles attributes={attributes} setAttributes={setAttributes} />
             </div>
 
           </div>

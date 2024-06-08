@@ -21,5 +21,5 @@ export const bundle = () =>
       '!todo.txt',
       '!webpack.config.js',
     ])
-    .pipe(zip('b-feature-lists.zip'))
-		.pipe(gulp.dest('bundled'))
+    .pipe(zip('feature-lists.zip'))
+    .pipe(gulp.dest('bundled'))

@@ -1,4 +1,4 @@
-=== B Feature Lists ===
+=== Feature Lists ===
 Contributors: abuhayat
 Donate link: https://gum.co/wpdonate/
 Tags: block, Gutenberg block, Feature Lists, feature table

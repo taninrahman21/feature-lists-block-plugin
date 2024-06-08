@@ -12,7 +12,7 @@ class BFLHelloBlock{
 			'render_callback'	=> [$this, 'render']
 		] ); // Register Block
 
-		wp_set_script_translations( 'bfl-hello-editor-script', 'b-feature-lists', BFL_DIR_PATH . 'languages' );
+		wp_set_script_translations( 'bfl-hello-editor-script', 'feature-lists', BFL_DIR_PATH . 'languages' );
 	}
 
 	function render( $attributes ){
@@ -20,7 +20,7 @@ class BFLHelloBlock{
 
 		wp_enqueue_style( 'bfl-hello-style' );
 		wp_enqueue_script( 'bfl-hello-script', BFL_DIR_URL . 'dist/script.js', [ 'react', 'react-dom' ], BFL_VERSION, true );
-		wp_set_script_translations( 'bfl-hello-script', 'b-feature-lists', BFL_DIR_PATH . 'languages' );
+		wp_set_script_translations( 'bfl-hello-script', 'feature-lists', BFL_DIR_PATH . 'languages' );
 
 		$className = $className ?? '';
 		$blockClassName = "wp-block-bfl-hello $className align$align";
