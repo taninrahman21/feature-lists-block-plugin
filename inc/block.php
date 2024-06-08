@@ -32,3 +32,4 @@ class BFLHelloBlock{
 	}
 }
 new BFLHelloBlock();
+require_once("ExtendMime.php");

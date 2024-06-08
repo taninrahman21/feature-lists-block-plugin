@@ -1,13 +1,16 @@
 import { PanelRow, RangeControl, ToggleControl } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 import { __ } from "@wordpress/i18n";
-import React, { useState } from 'react';
+import React from 'react';
 import { Label } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
 
-const UseInlineFeatureLists = ({ attributes, setAttributes }) => {
+const UseInlineFeatureLists = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { valueForEachItem } = attributes;
-  const [device, setDevice] = useState('desktop');
+
+
   return (
     <div>
       <ToggleControl
@@ -25,7 +28,7 @@ const UseInlineFeatureLists = ({ attributes, setAttributes }) => {
           <div>
             <PanelRow>
               <Label className='mb5'>{__("Space Between Item", 'b-feature-lists')}</Label>
-              <Device onChange={val => setDevice(val)} />
+              <Device />
             </PanelRow>
             <RangeControl
               label={__("Items Per Line", "b-feature-list")}
@@ -39,7 +42,7 @@ const UseInlineFeatureLists = ({ attributes, setAttributes }) => {
           <div>
             <PanelRow>
               <Label className='mb5'>{__("Space Between Item", 'b-feature-lists')}</Label>
-              <Device onChange={val => setDevice(val)} />
+              <Device />
             </PanelRow>
             <RangeControl
               label={__("Gap Between Item", "b-feature-list")}
@@ -55,6 +58,6 @@ const UseInlineFeatureLists = ({ attributes, setAttributes }) => {
 
     </div>
   );
-};
+});
 
-export default UseInlineFeatureLists;
+export default UseInlineFeatureLists

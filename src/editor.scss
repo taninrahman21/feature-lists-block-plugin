@@ -24,12 +24,10 @@
   margin: 0;
 }
 .line {
-  width: 1px;
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: -1;
 }
 
 // Content CSS Starts Here
@@ -62,15 +60,22 @@
   width: 100%;
   cursor: pointer;
 }
-.feature .icons {
-  width: fit-content;
-}
 .feature .title p {
   margin: 0;
 }
-.icons button {
+.feature .icons {
+  display: flex;
+}
+.feature .icons button {
+  font-size: 15px;
+}
+.icons .dlt-btn {
   border-left: 1px solid gray;
   color: red;
+}
+.icons .duplicate-btn {
+  border-left: 1px solid gray;
+  color: black;
 }
 
 // Icon Tab  and Icon Position Tab Style Starts Here
@@ -83,7 +88,9 @@
   cursor: pointer;
   border: 1px solid #ccc;
 }
-
+.tab-buttons .tab-button {
+  border-right: 1px solid #ccc;
+}
 .tab-buttons .tab-button,
 .leftAlign-btn,
 .rightAlign-btn,
@@ -103,6 +110,7 @@
 .hover-btn:hover {
   background-color: #635bbc;
   color: white;
+  cursor: pointer;
 }
 .leftAlign-btn,
 .centerAlign-btn,
@@ -161,8 +169,13 @@
   cursor: pointer;
   color: red;
 }
+.icon-container:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
 .icon-container:hover .delete-btn {
   display: block;
+  opacity: 1;
 }
 
 // Settings Css Starts here

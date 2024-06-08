@@ -2,13 +2,15 @@ import { __experimentalBorderControl as BorderControl, PanelBody, PanelRow, Rang
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { Background, Label } from '../../../../../../Components';
-import { Device } from '../../../../../../Components/Device/Device';
 import { BBoxControl } from '../../../../../../Components/BBoxControl/BBoxControl';
-import { updateData } from '../../../../utils/functions';
+import { Device } from '../../../../../../Components/Device/Device';
 import '../../../../editor.scss';
+import { updateData } from '../../../../utils/functions';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
-const Item = ({ attributes, setAttributes, device, setDevice }) => {
-  const { itemStyles } = attributes;
+const Item = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
+  const { itemStyles, valueForEachItem } = attributes;
   const colors = [
     { name: 'Black', color: 'black' },
     { name: 'Red', color: 'red' },
@@ -19,18 +21,20 @@ const Item = ({ attributes, setAttributes, device, setDevice }) => {
       <PanelBody title={__("Item Style", "b-features-lists")} initialOpen={false}>
 
         {/* Space Between Item */}
-        <div>
-          <PanelRow>
-            <Label className='mb5'>{__("Space Between Item", 'b-feature-lists')}</Label>
-            <Device onChange={val => setDevice(val)} />
-          </PanelRow>
-          <RangeControl
-            value={itemStyles.spaceBetweenItem[device]}
-            onChange={(value) => setAttributes({ itemStyles: updateData(itemStyles, value, "spaceBetweenItem", device) })}
-            min={5}
-            max={200}
-          />
-        </div>
+        {
+          valueForEachItem.useInlineFeatures || <div>
+            <PanelRow>
+              <Label className='mb5'>{__("Space Between Item", 'b-feature-lists')}</Label>
+              <Device />
+            </PanelRow>
+            <RangeControl
+              value={itemStyles.spaceBetweenItem[device]}
+              onChange={(value) => setAttributes({ itemStyles: updateData(itemStyles, value, "spaceBetweenItem", device) })}
+              min={0}
+              max={200}
+            />
+          </div>
+        }
 
         {/* Background Color */}
         <Background
@@ -76,7 +80,7 @@ const Item = ({ attributes, setAttributes, device, setDevice }) => {
         <div style={{ marginTop: "10px" }}>
           <PanelRow>
             <Label className='mb5'>{__("Padding", "b-feature-list")}</Label>
-            <Device onChange={val => setDevice(val)} />
+            <Device />
           </PanelRow>
           <BBoxControl
             values={itemStyles.padding[device]}
@@ -89,6 +93,6 @@ const Item = ({ attributes, setAttributes, device, setDevice }) => {
       </PanelBody>
     </div>
   );
-};
+})
 
 export default Item;

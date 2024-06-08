@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-02T11:06:46+00:00\n"
+"POT-Creation-Date: 2024-06-04T06:36:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: b-feature-lists\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. Description of the plugin
 #: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\b-feature-lists.php
-msgid "Description of the B Feature Lists."
+msgid "The Feature Lists WordPress Block Plugin provides an intuitive and flexible way to showcase features in a visually appealing list format.Designed for ease of use within the Gutenberg editor, this plugin enables users to create and customize feature lists with icons, titles, and descriptions effortlessly."
 msgstr ""
 
 #. Author of the plugin
@@ -35,161 +35,161 @@ msgid "http://bplugins.com"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18017
-#: dist/editor.js:18031
-#: dist/editor.js:19333
+#: dist/editor.js:19889
+#: dist/editor.js:19903
+#: dist/editor.js:21205
 msgid "Space Between Item"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18159
-#: dist/editor.js:18522
+#: dist/editor.js:20031
+#: dist/editor.js:20394
 msgid "Title"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18170
+#: dist/editor.js:20042
 msgid "description"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18215
-#: dist/editor.js:18724
-#: dist/editor.js:18861
-#: dist/editor.js:19346
+#: dist/editor.js:20087
+#: dist/editor.js:20596
+#: dist/editor.js:20733
+#: dist/editor.js:21218
 msgid "Background Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18227
-#: dist/editor.js:19219
+#: dist/editor.js:20099
+#: dist/editor.js:21091
 msgid "Hover Background Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18294
+#: dist/editor.js:20166
 msgid "Add New Feature"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18302
+#: dist/editor.js:20174
 msgid "Title HTML Tag"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18320
+#: dist/editor.js:20192
 msgid "Icon Shape"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18378
-#: dist/editor.js:18432
+#: dist/editor.js:20250
+#: dist/editor.js:20304
 msgid "Connector Line Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18388
-#: dist/editor.js:18442
+#: dist/editor.js:20260
+#: dist/editor.js:20314
 msgid "Connector Line Width"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18491
+#: dist/editor.js:20363
 msgid "Description"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18494
-#: dist/editor.js:18540
+#: dist/editor.js:20366
+#: dist/editor.js:20412
 msgid "Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18501
-#: dist/editor.js:18554
+#: dist/editor.js:20373
+#: dist/editor.js:20426
 msgid "Typography"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18527
+#: dist/editor.js:20399
 msgid "Title Bottom Space"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18547
+#: dist/editor.js:20419
 msgid "Hover Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18733
+#: dist/editor.js:20605
 msgid "Background Transition"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18743
-#: dist/editor.js:18870
+#: dist/editor.js:20615
+#: dist/editor.js:20742
 msgid "Border Style"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18766
-#: dist/editor.js:18893
+#: dist/editor.js:20638
+#: dist/editor.js:20765
 msgid "Border Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18774
-#: dist/editor.js:18901
+#: dist/editor.js:20646
+#: dist/editor.js:20773
 msgid "Border Width"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18790
+#: dist/editor.js:20662
 msgid "Border Transition"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18804
-#: dist/editor.js:18921
-#: dist/editor.js:19240
-#: dist/editor.js:19374
+#: dist/editor.js:20676
+#: dist/editor.js:20793
+#: dist/editor.js:21112
+#: dist/editor.js:21246
 msgid "Border Radius"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18815
+#: dist/editor.js:20687
 msgid "Border Radius Transition"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18825
-#: dist/editor.js:18933
+#: dist/editor.js:20697
+#: dist/editor.js:20805
 msgid "Box Shadow"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18832
+#: dist/editor.js:20704
 msgid "Box Shadow Transition"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18960
+#: dist/editor.js:20832
 msgid "Content Box"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:18965
+#: dist/editor.js:20837
 msgid "Padding"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:19208
+#: dist/editor.js:21080
 msgid "Normal Background Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:19233
-#: dist/editor.js:19366
+#: dist/editor.js:21105
+#: dist/editor.js:21238
 msgid "Border"
 msgstr ""
 
@@ -200,7 +200,7 @@ msgstr ""
 
 #: inc/block.json
 msgctxt "block description"
-msgid "Description of B Feature Lists."
+msgid "The Feature Lists WordPress Block Plugin lets you create stunning, customizable feature lists with icons, titles, and descriptions."
 msgstr ""
 
 #: inc/block.json

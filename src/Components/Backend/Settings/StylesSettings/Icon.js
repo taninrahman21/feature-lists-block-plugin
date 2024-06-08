@@ -1,14 +1,16 @@
 import { __experimentalBorderControl as BorderControl, PanelBody, PanelRow, RangeControl } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
-import { Background, Label } from '../../../../../../Components';
+import { BColor, Background, Label } from '../../../../../../Components';
+import { BBoxControl } from '../../../../../../Components/BBoxControl/BBoxControl';
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
-import { BBoxControl } from '../../../../../../Components/BBoxControl/BBoxControl';
 
 
 
-const Icon = ({ attributes, setAttributes, device, setDevice }) => {
+const Icon = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { iconStyle } = attributes;
   const colors = [
     { name: 'Black', color: 'black' },
@@ -19,6 +21,19 @@ const Icon = ({ attributes, setAttributes, device, setDevice }) => {
   return (
     <div>
       <PanelBody title={__("Icon Styles", "b-features-lists")} initialOpen={false}>
+        {/* SVG Icon Color */}
+        <BColor
+          label={__('Icon Color', 'b-feature-lists')}
+          value={iconStyle.iconColor}
+          onChange={value => setAttributes({ iconStyle: updateData(iconStyle, value, "iconColor") })}
+          defaultColor='null' />
+        {/* Hover Icon Color */}
+        <BColor
+          label={__('Hover Icon Color', 'b-feature-lists')}
+          value={iconStyle.iconColorHover}
+          onChange={value => setAttributes({ iconStyle: updateData(iconStyle, value, "iconColorHover") })}
+          defaultColor='null' />
+
         {/* Background Color */}
         <div>
           <p>Background</p>
@@ -81,7 +96,7 @@ const Icon = ({ attributes, setAttributes, device, setDevice }) => {
           <div>
             <PanelRow>
               <Label className='mb5'>{__("Size", "b-feature-list")}</Label>
-              <Device onChange={val => setDevice(val)} />
+              <Device />
             </PanelRow>
             <RangeControl
               value={iconStyle.iconDivSize[device]}
@@ -97,7 +112,7 @@ const Icon = ({ attributes, setAttributes, device, setDevice }) => {
           <div>
             <PanelRow>
               <Label className='mb5'>{__("Icon Size", "b-feature-list")}</Label>
-              <Device onChange={val => setDevice(val)} />
+              <Device />
             </PanelRow>
             <RangeControl
               value={iconStyle.iconSize[device]}
@@ -112,7 +127,7 @@ const Icon = ({ attributes, setAttributes, device, setDevice }) => {
         <div>
           <PanelRow>
             <Label className='mb5'>{__("Padding", "b-feature-list")}</Label>
-            <Device onChange={val => setDevice(val)} />
+            <Device />
           </PanelRow>
           <BBoxControl
             values={iconStyle.padding[device]}
@@ -122,20 +137,20 @@ const Icon = ({ attributes, setAttributes, device, setDevice }) => {
 
         {/* Spacing */}
         <div>
-            <PanelRow>
-              <Label className='mb5'>{__("Spacing", "b-feature-list")}</Label>
-              <Device onChange={val => setDevice(val)} />
-            </PanelRow>
-            <RangeControl
-              value={iconStyle.spaceFromContent[device]}
-              onChange={(value) => setAttributes({ iconStyle: updateData(iconStyle, value, "spaceFromContent", device) })}
-              min={5}
-              max={200}
-            />
-          </div>
+          <PanelRow>
+            <Label className='mb5'>{__("Spacing", "b-feature-list")}</Label>
+            <Device />
+          </PanelRow>
+          <RangeControl
+            value={iconStyle.spaceFromContent[device]}
+            onChange={(value) => setAttributes({ iconStyle: updateData(iconStyle, value, "spaceFromContent", device) })}
+            min={5}
+            max={200}
+          />
+        </div>
       </PanelBody>
     </div>
   );
-};
+});
 
 export default Icon;

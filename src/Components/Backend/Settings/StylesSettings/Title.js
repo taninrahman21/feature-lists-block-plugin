@@ -4,8 +4,10 @@ import React from 'react';
 import { BColor, Label, Typography } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
+import { withSelect } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 
-const Title = ({ attributes, setAttributes, setDevice, device }) => {
+const Title = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { title } = attributes;
   return (
     <div>
@@ -15,7 +17,7 @@ const Title = ({ attributes, setAttributes, setDevice, device }) => {
         <div>
           <PanelRow>
             <Label className='mb5'>{__("Title Bottom Space", 'b-feature-lists')}</Label>
-            <Device onChange={val => setDevice(val)} />
+            <Device />
           </PanelRow>
           <RangeControl
             value={title.bottomSpace[device]}
@@ -49,6 +51,6 @@ const Title = ({ attributes, setAttributes, setDevice, device }) => {
       </PanelBody>
     </div>
   );
-};
+});
 
 export default Title;

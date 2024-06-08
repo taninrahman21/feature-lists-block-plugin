@@ -5,7 +5,8 @@ import '../../../editor.scss';
 import ContentSettings from './ContentSettings/ContentSettings';
 import StylesSettings from './StylesSettings/StylesSettings';
 
-const Settings = ({ attributes, setAttributes }) => {
+const Settings = ({ attributes, setAttributes, activeFeature }) => {
+
   return (
     <>
       <InspectorControls>
@@ -26,8 +27,8 @@ const Settings = ({ attributes, setAttributes }) => {
           ]}>
           {(tab) => (
             <>
-              {tab.name === 'tab1' && <ContentSettings attributes={attributes} setAttributes={setAttributes} />}
-              {tab.name === 'tab2' && <StylesSettings attributes={attributes} setAttributes={setAttributes} />}
+              {tab.name === 'tab1' && <ContentSettings attributes={attributes} setAttributes={setAttributes} activeFeature={activeFeature} />}
+              {tab.name === 'tab2' && <StylesSettings attributes={attributes} setAttributes={setAttributes}  />}
             </>
           )}
         </TabPanel>

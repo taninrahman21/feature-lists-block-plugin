@@ -8,7 +8,7 @@ import {
 
 const Styles = ({ attributes }) => {
   const { cId, items, valueForEachItem, itemStyles, iconStyle, title, description, contentBox } = attributes;
-  const { iconShape, iconPosition, iconVerticallyCenter, useInlineFeatures, itemsPerLine, gapBetweenItem, showConnectorLine, connectorLineColor, connectorLineWidth } = valueForEachItem;
+  const { iconShape, iconPosition, iconVerticallyCenter, useInlineFeatures, itemsPerLine, gapBetweenItem, showConnectorLine, connectorLineColor, connectorLineWidth, showIcon } = valueForEachItem;
   const { spaceBetweenItem, borderRadius, border, addBorder, padding, backgroundColor } = itemStyles;
 
   const mainWrapper = `#main-wrapper-${cId}`;
@@ -42,18 +42,23 @@ const Styles = ({ attributes }) => {
             .map((item, index) => {
               return `
                     ${featureIcon}.icon-${index} {
-                      display: ${valueForEachItem.iconShape === "none" ? "none" : item.icon.type === "none" ? "none" : "flex"};
+                      display: ${showIcon === false ? "none" : item.icon.type === "none" ? "none" : "flex"};
                       background: ${item.icon.bgColor ? item.icon.bgColor : iconStyle.normalBackground};
                       }
                     ${featureIcon}.icon-${index}:hover { background: ${item.icon.hoverBg ? item.icon.hoverBg : iconStyle.hoverBackground};
-                    }`;
+                    }
+                    ${featureIcon}.icon-${index} .img-icon svg {
+                      fill: ${item.icon.iconColor};
+                    }
+
+                    `;
             }).join("")}
 
           ${item} {
             ${iconPosition === "right" && "flex-direction: row-reverse; text-align: right;"};
             ${iconPosition === "center" && "flex-direction: column; justify-content: center; text-align: center"};
             ${iconVerticallyCenter ? "align-items: center;" : "align-items: flex-start;"};
-            margin-bottom: ${spaceBetweenItem.desktop}px;
+            margin-bottom: ${!useInlineFeatures ? `${spaceBetweenItem.desktop}px` : undefined};
             ${addBorder && `border: ${border.width} ${border.style} ${border.color};`};
             padding: ${getBoxCSS(padding.desktop)};
             border-radius: ${borderRadius}px;
@@ -66,29 +71,42 @@ const Styles = ({ attributes }) => {
           ${featureIcon} {
             border: ${iconStyle.border.width} ${iconStyle.border.style} ${iconStyle.border.color};
             border-radius: ${iconStyle.borderRadius}px;
-            display: ${iconShape === "none" ? "none" : "flex"};
+            ${iconShape === "rhombus" && "transform: rotate(45deg);"};
+            ${iconShape === "circle" && "border-radius: 50%;"};
+            ${iconShape === "none" && "border: none;"};
+            display: ${showIcon === false ? "none" : "flex"};
             justify-content: center;
             align-items: center;
             transition: transform 0.5s linear;
             padding: ${getBoxCSS(iconStyle.padding.desktop)};
-            ${iconShape === "circle" && "border-radius: 50%;"};
-            ${valueForEachItem.iconShape === "rhombus" && "transform: rotate(45deg); overflow: hidden;"};
             ${getBackgroundCSS(iconStyle.normalBackground)};
             height: ${iconStyle.iconDivSize.desktop}px;
             width: ${iconStyle.iconDivSize.desktop}px;
             ${iconPosition === "left" && `margin-right:  ${iconStyle.spaceFromContent.desktop}px`};
             ${iconPosition === "right" && `margin-left: ${iconStyle.spaceFromContent.desktop}px;`};
             ${iconPosition === "center" && `margin-bottom: ${iconStyle.spaceFromContent.desktop}px;`};
-          }
+          } 
 
           ${featureIcon}:hover {
              ${getBackgroundCSS(iconStyle.hoverBackground)};
+            cursor: pointer;
           }
            
-          ${featureIcon} img {
+          ${featureIcon} .img-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: ${iconStyle.iconSize.desktop}px;
             width: ${iconStyle.iconSize.desktop}px;
+          }
+          ${featureIcon} .img-icon img, ${featureIcon} .img-icon svg {
+            height: 100%;
+            width: 100%;
             ${iconShape === "rhombus" && "transform: rotate(-45deg) ! important;"};
+            fill: ${iconStyle.iconColor};
+          }
+          ${featureIcon}:hover .img-icon svg {
+            fill: ${iconStyle.hoverIconColor};
           }
 
           ${featureTitle} {
@@ -100,6 +118,7 @@ const Styles = ({ attributes }) => {
           }
           ${item}:hover .feature-content .title{
             color: ${title.hoverColor};
+            cursor: pointer;
           }
 
           ${content} {
@@ -119,13 +138,14 @@ const Styles = ({ attributes }) => {
             border-width: ${getBoxCSS(contentBox.hoverBorder.width.desktop)};
             border-radius: ${getBoxCSS(contentBox.hoverBorderRadius.desktop)};
             box-shadow: ${getShadowCSS(contentBox.boxShadowHover)};
+            cursor: pointer;
           }
 
           ${connectionLine} {
             display: ${!(iconPosition === "center") && !(useInlineFeatures) && showConnectorLine ? "block" : "none"};
             width: ${connectorLineWidth}px;
-            height: calc(${padding.desktop.bottom}  + ${spaceBetweenItem.desktop}px + ${padding.desktop.top} + ${contentBox.padding.desktop.bottom ? contentBox.padding.desktop.bottom : "0px"} + (${contentBox.padding.desktop.top ? `calc(${contentBox.padding.desktop.top} - 5px)` : "0px"}) + 5px);
             background-color: ${connectorLineColor};
+            height: calc(${padding.desktop.bottom}  + ${spaceBetweenItem.desktop}px + ${padding.desktop.top} + ${contentBox.padding.desktop.bottom ? contentBox.padding.desktop.bottom : "0px"} + (${contentBox.padding.desktop.top ? `calc(${contentBox.padding.desktop.top} - 5px)` : "0px"}) + 5px);
           }
 
 

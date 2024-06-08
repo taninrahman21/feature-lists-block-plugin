@@ -6,8 +6,10 @@ import { BColor, Background, Label, ShadowControl } from '../../../../../../Comp
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
 import { BBoxControl } from '../../../Panel/BBoxControl/BBoxControl';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
-const NormalContentBoxStyles = ({ attributes, setAttributes, device, setDevice }) => {
+const NormalContentBoxStyles = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { contentBox } = attributes;
   return (
     <div>
@@ -54,7 +56,7 @@ const NormalContentBoxStyles = ({ attributes, setAttributes, device, setDevice }
             <div style={{ marginTop: "10px" }}>
               <PanelRow>
                 <Label className='mb5'>{__("Border Width", 'b-feature-lists')}</Label>
-                <Device onChange={val => setDevice(val)} />
+                <Device />
               </PanelRow>
               <BBoxControl
                 values={contentBox.normalBorder.width[device]}
@@ -74,7 +76,7 @@ const NormalContentBoxStyles = ({ attributes, setAttributes, device, setDevice }
       <div style={{ marginTop: "10px" }}>
         <PanelRow>
           <Label className='mb5'>{__("Border Radius", 'b-feature-lists')}</Label>
-          <Device onChange={val => setDevice(val)} />
+          <Device />
         </PanelRow>
         <BBoxControl
           values={contentBox.normalBorderRadius[device]}
@@ -93,6 +95,6 @@ const NormalContentBoxStyles = ({ attributes, setAttributes, device, setDevice }
 
     </div>
   );
-};
+});
 
 export default NormalContentBoxStyles;

@@ -1,38 +1,55 @@
-import React, { useRef, useEffect } from 'react';
-import Styles from '../Common/Styles';
+import React from 'react';
+import SVG from 'react-inlinesvg';
 import '../../editor.scss';
+import Styles from '../Common/Styles';
 
-const BFeatureLists = ({ attributes, setAttributes }) => {
-  const { cId, items, valueForEachItem } = attributes;
+const BFeatureLists = ({ attributes, titleElement, descriptionEl, setActiveFeature }) => {
+  const { cId, items } = attributes;
 
- 
-  
+
+
   return (
     <>
       <Styles attributes={attributes} />
-
+      
 
       <div id={`main-wrapper-${cId}`}>
         <div className='items-container'>
           {
             items.map((item, index) => {
               return (
-                <div key={index} className='feature-item'>
+                <div key={index} className='feature-item' onClick={() => setActiveFeature(index)}>
 
                   {/* Icon */}
                   <div className={`feature-icon icon-${index} rhombus`}>
-                    <img src={item?.icon?.url} alt=' ' />
+                    <div className='img-icon'>
+                      {
+                        item?.icon?.type === "image" && item?.icon?.imgUrl && <img src={item.icon.imgUrl} alt='' />
+                      }
+                      {
+                        item.icon.type === "icon" && <SVG
+                          src={item.icon.svgIcon?.url}
+                          width={30}
+                          height={30}
+                        />
+                      }
+
+                    </div>
                     {index < items.length - 1 && <div className="line"></div>}
                   </div>
 
 
                   {/* Content */}
                   <div className='feature-content'>
+                    {/* Feature Title */}
                     {
-                      item?.title?.link ? <valueForEachItem.titleTag className='title' onClick={() => window.open(`${item.title.link}`, item.title?.openNewTab ? '_blank' : '_self')}>{item?.title?.text}</valueForEachItem.titleTag> :
-                        <valueForEachItem.titleTag className='title'>{item?.title?.text}</valueForEachItem.titleTag>
+                      titleElement(item, index)
                     }
-                    <p className='description'>{item?.description}</p>
+
+                    {/* Feature Description */}
+                    {
+                      descriptionEl(item, index)
+                    }
                   </div>
 
                 </div>

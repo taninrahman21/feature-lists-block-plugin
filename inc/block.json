@@ -4,12 +4,7 @@
   "title": "B Feature Lists",
   "description": "The Feature Lists WordPress Block Plugin lets you create stunning, customizable feature lists with icons, titles, and descriptions.",
   "category": "widgets",
-  "keywords": [
-    "hello",
-    "block",
-    "feature lists",
-    "features table"
-  ],
+  "keywords": ["hello", "block", "feature lists", "features table"],
   "textdomain": "b-feature-lists",
   "attributes": {
     "align": {
@@ -29,29 +24,16 @@
       "default": [
         {
           "icon": {
-            "type": "icon",
-            "url": "http://localhost/tanin-wp/wp-content/uploads/2024/04/favicon.svg",
+            "type": "image",
+            "imgUrl": "http://localhost/tanin-wp/wp-content/uploads/2024/04/favicon.svg",
+            "svgIcon": { "url": "" },
+            "iconColor": "",
             "width": "",
             "bgColor": "",
             "hoverBg": ""
           },
           "title": {
             "text": "Feature Item 1",
-            "link": "",
-            "openNewTab": false
-          },
-          "description": "Description of B Feature Lists Content."
-        },
-        {
-          "icon": {
-            "type": "icon",
-            "url": "http://localhost/tanin-wp/wp-content/uploads/2024/04/favicon.svg",
-            "width": "",
-            "bgColor": "",
-            "hoverBg": ""
-          },
-          "title": {
-            "text": "Feature Item 2",
             "link": "",
             "openNewTab": false
           },
@@ -63,6 +45,7 @@
       "type": "object",
       "default": {
         "titleTag": "H3",
+        "showIcon": true,
         "iconShape": "square",
         "iconPosition": "left",
         "iconVerticallyCenter": true,
@@ -111,9 +94,11 @@
     "iconStyle": {
       "type": "object",
       "default": {
-        "backgroundFor": "",
+        "backgroundFor": "normal",
         "normalBackground": { "color": "transparent" },
         "hoverBackground": { "color": "" },
+        "iconColor": "",
+        "iconColorHover": "",
         "iconDivSize": { "desktop": 35, "tablet": 35, "mobile": 35 },
         "iconSize": { "desktop": 25, "tablet": 25, "mobile": 25 },
         "padding": {
@@ -177,7 +162,7 @@
           "style": "none",
           "color": ""
         },
-        "normalBorderRadius": { "desktop": {}, "tablet": {}, "mobile": {}},
+        "normalBorderRadius": { "desktop": {}, "tablet": {}, "mobile": {} },
         "hoverBorderRadius": { "desktop": {}, "tablet": {}, "mobile": {} },
         "backgroundTransition": 0,
         "borderTransition": 0,

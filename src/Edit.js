@@ -1,14 +1,21 @@
-import { useEffect } from 'react';
-import BFeatureLists from './Components/BFeatureLists/BFeatureLists';
+import { useEffect, useState } from 'react';
+import BFeatureListsBack from './Components/Backend/BFeatureListsBack/BFeatureListsBack';
 import Settings from './Components/Backend/Settings/Settings';
+
+
 const Edit = props => {
 	const { setAttributes, clientId, attributes } = props;
-	useEffect(() => { clientId && setAttributes({ cId: clientId.substring(0, 10) }); }, [clientId]); // Set & Update clientId to cId
+	const [activeFeature, setActiveFeature] = useState(0);
+	useEffect(() => { clientId && setAttributes({ cId: clientId.substring(0, 10) }); }, [clientId]);
+
+
+
 	return (
 		<>
-			<Settings attributes={attributes} setAttributes={setAttributes} />
-			<BFeatureLists attributes={attributes} setAttributes={setAttributes} />
+			<Settings attributes={attributes} setAttributes={setAttributes} activeFeature={activeFeature} />
+			<BFeatureListsBack attributes={attributes} setAttributes={setAttributes} setActiveFeature={setActiveFeature} />
 		</>
 	)
 };
+
 export default Edit;

@@ -3,23 +3,21 @@ import { __ } from '@wordpress/i18n';
 import { produce } from 'immer';
 import React, { useState } from 'react';
 import { FaAlignCenter, FaAlignLeft, FaAlignRight } from "react-icons/fa6";
+import { GrDuplicate } from "react-icons/gr";
 import { BColor } from '../../../../../../Components';
 import '../../../../editor.scss';
 import { updateData } from '../../../../utils/functions';
+import { MediaArea } from '../../../Panel/MediaArea/MediaArea';
 import UseInlineFeatureLists from './UseInlineFeatureLists';
 import UploadIcon from './uploadIcon';
 
-const Content = ({ attributes, setAttributes }) => {
+const Content = ({ attributes, setAttributes, activeFeature }) => {
   const { items, valueForEachItem } = attributes;
-  const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+  const [openEditFeature, setOpenEditFeature] = useState(false);
 
 
-  const toggleEditOption = (index) => {
-    if (selectedItemIndex === index) {
-      setSelectedItemIndex(null);
-    } else {
-      setSelectedItemIndex(index);
-    }
+  const toggleEditOption = () => {
+    setOpenEditFeature(!openEditFeature);
   };
 
   // Delete Item Function
@@ -34,10 +32,29 @@ const Content = ({ attributes, setAttributes }) => {
   const addItem = () => {
     const newItems = produce(items, draft => {
       draft.push({
-        "icon": { "type": "icon", "url": "http://localhost/tanin-wp/wp-content/uploads/2024/04/favicon.svg", "width": "", "bgColor": "" },
-        "title": { "text": "New Feature", "link": "", "openNewTab": false },
+        "icon": {
+          "type": "image",
+          "imgUrl": "http://localhost/tanin-wp/wp-content/uploads/2024/04/favicon.svg",
+          "svgIcon": { "url": "" },
+          "width": "",
+          "bgColor": "",
+          "hoverBg": ""
+        },
+        "title": {
+          "text": "New Feature Item",
+          "link": "",
+          "openNewTab": false
+        },
         "description": "Description of B Feature Lists Content."
       });
+    });
+    setAttributes({ items: newItems });
+  };
+
+  // Duplicate Item
+  const duplicateItem = (index) => {
+    const newItems = produce(items, draft => {
+      draft.splice(index + 1, 0, draft[index]);
     });
     setAttributes({ items: newItems });
   };
@@ -48,20 +65,23 @@ const Content = ({ attributes, setAttributes }) => {
     <div>
       <PanelBody title={__("Content Setting", "b-feature-list")}>
         {
-          items.map((item, index) => {
+          items.filter((item, index) => index === activeFeature).map((item, index) => {
             return (
               <>
                 <div key={index} className='feature'>
-                  <div onClick={() => toggleEditOption(index)} className='title'>
-                    <p>{item.title.text.length > 21 ? `${item.title.text.slice(0, 21)}....` : item.title.text} </p>
+                  <div onClick={() => toggleEditOption()} className='title'>
+                    <p>{item.title.text ? item.title.text.length > 21 ? `${item.title.text.slice(0, 21)}....` : item.title.text : `Item-${activeFeature + 1}`} </p>
                   </div>
                   <div className='icons'>
-                    <Button onClick={() => deleteItem(index)} icon={"trash"}></Button>
+                    <Button title='Duplicate Feature' className='duplicate-btn' onClick={() => duplicateItem(index)}> <GrDuplicate /></Button>
+                    {
+                      items.length > 1 && <Button className='dlt-btn' onClick={() => deleteItem(index)} icon={"trash"}></Button>
+                    }
                   </div>
                 </div>
 
                 {/* Edit Option of Content */}
-                {selectedItemIndex === index && (
+                {openEditFeature && (
                   <>
                     <div>
                       {/* Title Text */}
@@ -70,7 +90,7 @@ const Content = ({ attributes, setAttributes }) => {
                         value={item.title.text}
                         onChange={(value) => {
                           const newItems = produce(items, draft => {
-                            draft[index].title.text = value;
+                            draft[activeFeature].title.text = value;
                           });
                           setAttributes({ items: newItems });
                         }}
@@ -81,7 +101,7 @@ const Content = ({ attributes, setAttributes }) => {
                         value={item.description}
                         onChange={(value) => {
                           const newItems = produce(items, draft => {
-                            draft[index].description = value;
+                            draft[activeFeature].description = value;
                           });
                           setAttributes({ items: newItems });
                         }}
@@ -97,7 +117,7 @@ const Content = ({ attributes, setAttributes }) => {
                           className={`tab-button ${item.icon.type === 'none' ? 'active' : ''}`}
                           onClick={() => {
                             const newItems = produce(items, draft => {
-                              draft[index].icon.type = "none";
+                              draft[activeFeature].icon.type = "none";
                             });
                             setAttributes({ items: newItems });
                           }}
@@ -107,26 +127,57 @@ const Content = ({ attributes, setAttributes }) => {
                           className={`tab-button ${item.icon.type === 'icon' ? 'active' : ''}`}
                           onClick={() => {
                             const newItems = produce(items, draft => {
-                              draft[index].icon.type = "icon";
+                              draft[activeFeature].icon.type = "icon";
                             });
                             setAttributes({ items: newItems });
                           }}
                         >Icon
                         </div>
+                        <div
+                          className={`tab-button ${item.icon.type === 'image' ? 'active' : ''}`}
+                          onClick={() => {
+                            const newItems = produce(items, draft => {
+                              draft[activeFeature].icon.type = "image";
+                            });
+                            setAttributes({ items: newItems });
+                          }}
+                        >Image
+                        </div>
                       </div>
                       <div className="tab-content">
-                        {/* <div className={`tab-item ${item.icon.type === 'none' ? 'active' : ''}`}>
-                            <p>This is the None section.</p>
-                          </div> */}
+                        {/* Svg Icon Upload */}
                         <div className={`tab-item ${item.icon.type === 'icon' ? 'active' : ''}`}>
-                          <UploadIcon attributes={attributes} setAttributes={setAttributes} index={index} />
+                          <div style={{ margin: "10px 0px" }}>
+                            <MediaArea
+                              value={item.icon.svgIcon} types="image/svg+xml"
+                              onChange={val => {
+                                const newItems = produce(items, draft => {
+                                  draft[activeFeature].icon.svgIcon = val;
+                                });
+                                setAttributes({ items: newItems });
+                              }}
+                              height="100%" width="100%" />
+                          </div>
 
+                          {/* Icon Color */}
+                          <BColor
+                            label={__('Icon Color', 'b-feature-lists')}
+                            value={item.icon.iconColor}
+                            onChange={value => {
+                              const newItems = produce(items, draft => {
+                                draft[activeFeature].icon.iconColor = value;
+                              });
+                              setAttributes({ items: newItems });
+                            }}
+                            defaultColor='null' />
+
+                          {/* Background Color */}
                           <BColor
                             label={__('Background Color', 'b-feature-lists')}
                             value={item.icon.bgColor}
                             onChange={value => {
                               const newItems = produce(items, draft => {
-                                draft[index].icon.bgColor = value;
+                                draft[activeFeature].icon.bgColor = value;
                               });
                               setAttributes({ items: newItems });
                             }}
@@ -138,12 +189,40 @@ const Content = ({ attributes, setAttributes }) => {
                             value={item.icon.hoverBg}
                             onChange={value => {
                               const newItems = produce(items, draft => {
-                                draft[index].icon.hoverBg = value;
+                                draft[activeFeature].icon.hoverBg = value;
+                              });
+                              setAttributes({ items: newItems });
+                            }}
+                            defaultColor='null' />
+                        </div>
+
+                        {/* Image Icon Upload */}
+                        <div className={`tab-item ${item.icon.type === 'image' ? 'active' : ''}`}>
+                          <UploadIcon attributes={attributes} setAttributes={setAttributes} index={activeFeature} />
+
+                          {/* Background Color */}
+                          <BColor
+                            label={__('Background Color', 'b-feature-lists')}
+                            value={item.icon.bgColor}
+                            onChange={value => {
+                              const newItems = produce(items, draft => {
+                                draft[activeFeature].icon.bgColor = value;
                               });
                               setAttributes({ items: newItems });
                             }}
                             defaultColor='null' />
 
+                          {/* Hover Background Color */}
+                          <BColor
+                            label={__('Hover Background Color', 'b-feature-lists')}
+                            value={item.icon.hoverBg}
+                            onChange={value => {
+                              const newItems = produce(items, draft => {
+                                draft[activeFeature].icon.hoverBg = value;
+                              });
+                              setAttributes({ items: newItems });
+                            }}
+                            defaultColor='null' />
                         </div>
                       </div>
                     </div>
@@ -157,7 +236,7 @@ const Content = ({ attributes, setAttributes }) => {
                           value={item.title.link}
                           onChange={value => {
                             const newItems = produce(items, draft => {
-                              draft[index].title.link = value;
+                              draft[activeFeature].title.link = value;
                             });
                             setAttributes({ items: newItems });
                           }}
@@ -169,7 +248,7 @@ const Content = ({ attributes, setAttributes }) => {
                           checked={item.title.openNewTab}
                           onChange={(e) => {
                             const newItems = produce(items, draft => {
-                              draft[index].title.openNewTab = e;
+                              draft[activeFeature].title.openNewTab = e;
                             });
                             setAttributes({ items: newItems });
                           }}
@@ -224,150 +303,176 @@ const Content = ({ attributes, setAttributes }) => {
           onChange={(newTag) => setAttributes({ valueForEachItem: updateData(valueForEachItem, newTag, "titleTag") })}
         />
 
-
-        {/* Select Icon Shape */}
-        <SelectControl
-          label={__("Icon Shape", "b-feature-lists")}
-          value={valueForEachItem.iconShape}
-          options={[
-            { label: 'None', value: 'none' },
-            { label: 'Circle', value: 'circle', checked: true },
-            { label: 'Square', value: 'square' },
-            { label: 'Rhombus', value: 'rhombus' }
-          ]}
-          onChange={(newShape) => setAttributes({ valueForEachItem: updateData(valueForEachItem, newShape, "iconShape") })}
+        {/* Show Icon or Not */}
+        <ToggleControl
+          label={__("Display Icon", "b-feature-list")}
+          checked={valueForEachItem.showIcon}
+          onChange={value => {
+            const newValueForEachItem = produce(valueForEachItem, draft => {
+              draft.showIcon = value;
+            });
+            setAttributes({ valueForEachItem: newValueForEachItem });
+          }}
         />
 
 
-        {/* Icon Position */}
+        {/* Select Icon Shape */}
+        {
+          valueForEachItem.showIcon &&
+          < SelectControl
+            label={__("Icon Shape", "b-feature-lists")}
+            value={valueForEachItem.iconShape}
+            options={[
+              { label: 'None', value: 'none' },
+              { label: 'Circle', value: 'circle', checked: true },
+              { label: 'Square', value: 'square' },
+              { label: 'Rhombus', value: 'rhombus' }
+            ]}
+            onChange={(newShape) => setAttributes({ valueForEachItem: updateData(valueForEachItem, newShape, "iconShape") })}
+          />
+        }
 
 
-        <p>Icon Position</p>
 
-        <div className="item-position-tab">
-          <div
-            className={`leftAlign-btn ${valueForEachItem.iconPosition === 'left' ? 'activeIconPosition' : ''}`}
-            onClick={() => setAttributes({ valueForEachItem: updateData(valueForEachItem, "left", "iconPosition") })}
-          > <FaAlignLeft /> </div>
-          <div
-            className={`centerAlign-btn ${valueForEachItem.iconPosition === 'center' ? 'activeIconPosition' : ''}`}
-            onClick={() => setAttributes({ valueForEachItem: updateData(valueForEachItem, "center", "iconPosition") })}
-          ><FaAlignCenter /> </div>
-          <div
-            className={`rightAlign-btn ${valueForEachItem.iconPosition === 'right' ? 'activeIconPosition' : ''}`}
-            onClick={() => setAttributes({ valueForEachItem: updateData(valueForEachItem, "right", "iconPosition") })}
-            icon={"rig"}
-          ><FaAlignRight /> </div>
-        </div>
+        {/* Icon Alignment */}
+        {
+          valueForEachItem.showIcon && (
+            <>
+              <p>Icon Alignment</p>
 
-        {/* Icon Position Tab Content Starts Here */}
-        <div className="icon-position-tab-content">
+              <div className="item-position-tab">
+                <div
+                  className={`leftAlign-btn ${valueForEachItem.iconPosition === 'left' ? 'activeIconPosition' : ''}`}
+                  onClick={() => setAttributes({ valueForEachItem: updateData(valueForEachItem, "left", "iconPosition") })}
+                > <FaAlignLeft /> </div>
+                <div
+                  className={`centerAlign-btn ${valueForEachItem.iconPosition === 'center' ? 'activeIconPosition' : ''}`}
+                  onClick={() => setAttributes({ valueForEachItem: updateData(valueForEachItem, "center", "iconPosition") })}
+                ><FaAlignCenter /> </div>
+                <div
+                  className={`rightAlign-btn ${valueForEachItem.iconPosition === 'right' ? 'activeIconPosition' : ''}`}
+                  onClick={() => setAttributes({ valueForEachItem: updateData(valueForEachItem, "right", "iconPosition") })}
+                  icon={"rig"}
+                ><FaAlignRight /> </div>
+              </div>
 
-          {/* Left Align Content */}
-          <div className={`icon-position-tab-item ${valueForEachItem.iconPosition === 'left' ? 'activeIconPosition' : ''}`}>
-            {/* Toggle Icon Vertically Center  */}
-            <ToggleControl
-              label={__("Content Vertically Center", "b-feature-list")}
-              checked={valueForEachItem.iconVerticallyCenter}
-              onChange={(e) => setAttributes({ valueForEachItem: updateData(valueForEachItem, e, "iconVerticallyCenter") })}
-            />
+              {/* Icon Position Tab Content Starts Here */}
+              <div className="icon-position-tab-content">
 
-            {/* Show Connector Line */}
-            {
-              !valueForEachItem.useInlineFeatures && (
-                <>
+                {/* Left Align Content */}
+                <div className={`icon-position-tab-item ${valueForEachItem.iconPosition === 'left' ? 'activeIconPosition' : ''}`}>
+                  {/* Toggle Icon Vertically Center  */}
                   <ToggleControl
-                    label={__("Show Connector Line", "b-feature-list")}
-                    checked={valueForEachItem.showConnectorLine}
-                    onChange={(e) => setAttributes({ valueForEachItem: updateData(valueForEachItem, e, "showConnectorLine") })}
+                    label={__("Content Vertically Center", "b-feature-list")}
+                    checked={valueForEachItem.iconVerticallyCenter}
+                    onChange={(e) => setAttributes({ valueForEachItem: updateData(valueForEachItem, e, "iconVerticallyCenter") })}
                   />
-                  {/* Connector Line Color */}
+
+                  {/* Show Connector Line */}
                   {
-                    valueForEachItem.showConnectorLine && <div style={{ margin: "10px 0" }}>
-                      <BColor
-                        label={__('Connector Line Color', 'b-feature-lists')}
-                        value={valueForEachItem.connectorLineColor}
-                        onChange={value => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineColor") })}
-                        defaultColor='#000' />
-                    </div>
+                    !valueForEachItem.useInlineFeatures && (
+                      <>
+                        <ToggleControl
+                          label={__("Show Connector Line", "b-feature-list")}
+                          checked={valueForEachItem.showConnectorLine}
+                          onChange={(e) => setAttributes({ valueForEachItem: updateData(valueForEachItem, e, "showConnectorLine") })}
+                        />
+                        {/* Connector Line Color */}
+                        {
+                          valueForEachItem.showConnectorLine && <div style={{ margin: "10px 0" }}>
+                            <BColor
+                              label={__('Connector Line Color', 'b-feature-lists')}
+                              value={valueForEachItem.connectorLineColor}
+                              onChange={value => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineColor") })}
+                              defaultColor='#000' />
+                          </div>
+                        }
+                        {/* Connector Line Width */}
+                        {
+                          valueForEachItem.showConnectorLine && <div>
+                            <RangeControl
+                              label={__("Connector Line Width", "b-feature-lists")}
+                              value={valueForEachItem.connectorLineWidth}
+                              onChange={(value) => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineWidth") })}
+                              min={1}
+                              max={200}
+                            />
+                          </div>
+                        }
+                      </>
+                    )
                   }
-                  {/* Connector Line Width */}
-                  {
-                    valueForEachItem.showConnectorLine && <div>
-                      <RangeControl
-                        label={__("Connector Line Width", "b-feature-lists")}
-                        value={valueForEachItem.connectorLineWidth}
-                        onChange={(value) => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineWidth") })}
-                        min={1}
-                        max={200}
-                      />
-                    </div>
-                  }
-                </>
-              )
-            }
 
 
-            <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes} />
+                  <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes} />
 
-          </div>
+                </div>
 
-          {/* Center Align Content */}
-          <div className={`icon-position-tab-item ${valueForEachItem.iconPosition === 'center' ? 'activeIconPosition' : ''}`}>
-            <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes} />
-          </div>
+                {/* Center Align Content */}
+                <div className={`icon-position-tab-item ${valueForEachItem.iconPosition === 'center' ? 'activeIconPosition' : ''}`}>
+                  <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes} />
+                </div>
 
-          {/* Right Align Content */}
-          <div className={`icon-position-tab-item ${valueForEachItem.iconPosition === 'right' ? 'activeIconPosition' : ''}`}>
-            {/* Toggle Icon Vertically Center  */}
-            <ToggleControl
-              label={__("Content Vertically Center", "b-feature-list")}
-              checked={valueForEachItem.iconVerticallyCenter}
-              onChange={(e) => setAttributes({ valueForEachItem: updateData(valueForEachItem, e, "iconVerticallyCenter") })}
-            />
-
-            {/* Show Connector Line */}
-            {
-              !valueForEachItem.useInlineFeatures && (
-                <>
+                {/* Right Align Content */}
+                <div className={`icon-position-tab-item ${valueForEachItem.iconPosition === 'right' ? 'activeIconPosition' : ''}`}>
+                  {/* Toggle Icon Vertically Center  */}
                   <ToggleControl
-                    label={__("Show Connector Line", "b-feature-list")}
-                    checked={valueForEachItem.showConnectorLine}
-                    onChange={(e) => setAttributes({ valueForEachItem: updateData(valueForEachItem, e, "showConnectorLine") })}
+                    label={__("Content Vertically Center", "b-feature-list")}
+                    checked={valueForEachItem.iconVerticallyCenter}
+                    onChange={(e) => setAttributes({ valueForEachItem: updateData(valueForEachItem, e, "iconVerticallyCenter") })}
                   />
-                  {/* Connector Line Color */}
+
+                  {/* Show Connector Line */}
                   {
-                    valueForEachItem.showConnectorLine && <div style={{ margin: "10px 0" }}>
-                      <BColor
-                        label={__('Connector Line Color', 'b-feature-lists')}
-                        value={valueForEachItem.connectorLineColor}
-                        onChange={value => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineColor") })}
-                        defaultColor='#000' />
-                    </div>
+                    !valueForEachItem.useInlineFeatures && (
+                      <>
+                        <ToggleControl
+                          label={__("Show Connector Line", "b-feature-list")}
+                          checked={valueForEachItem.showConnectorLine}
+                          onChange={(e) => setAttributes({ valueForEachItem: updateData(valueForEachItem, e, "showConnectorLine") })}
+                        />
+                        {/* Connector Line Color */}
+                        {
+                          valueForEachItem.showConnectorLine && <div style={{ margin: "10px 0" }}>
+                            <BColor
+                              label={__('Connector Line Color', 'b-feature-lists')}
+                              value={valueForEachItem.connectorLineColor}
+                              onChange={value => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineColor") })}
+                              defaultColor='#000' />
+                          </div>
+                        }
+                        {/* Connector Line Width */}
+                        {
+                          valueForEachItem.showConnectorLine && <div>
+                            <RangeControl
+                              label={__("Connector Line Width", "b-feature-lists")}
+                              value={valueForEachItem.connectorLineWidth}
+                              onChange={(value) => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineWidth") })}
+                              min={1}
+                              max={50}
+                            />
+                          </div>
+                        }
+                      </>
+                    )
                   }
-                  {/* Connector Line Width */}
-                  {
-                    valueForEachItem.showConnectorLine && <div>
-                      <RangeControl
-                        label={__("Connector Line Width", "b-feature-lists")}
-                        value={valueForEachItem.connectorLineWidth}
-                        onChange={(value) => setAttributes({ valueForEachItem: updateData(valueForEachItem, value, "connectorLineWidth") })}
-                        min={1}
-                        max={50}
-                      />
-                    </div>
-                  }
-                </>
-              )
-            }
 
 
-            <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes} />
-          </div>
+                  <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes}/>
+                </div>
 
 
 
-        </div>
+              </div>
+            </>
+          )
+        }
+
+
+        {/* UseInlineFeature For Non Icon Features */}
+        {
+          valueForEachItem.showIcon === false && <UseInlineFeatureLists attributes={attributes} setAttributes={setAttributes} />
+        }
 
       </PanelBody>
     </div>

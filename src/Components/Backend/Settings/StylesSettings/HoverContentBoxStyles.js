@@ -6,8 +6,10 @@ import { BColor, Background, Label, ShadowControl } from '../../../../../../Comp
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
 import { BBoxControl } from '../../../Panel/BBoxControl/BBoxControl';
+import { withSelect } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 
-const HoverContentBoxStyles = ({ attributes, setAttributes, device, setDevice }) => {
+const HoverContentBoxStyles = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { contentBox } = attributes;
 
   return (
@@ -65,7 +67,7 @@ const HoverContentBoxStyles = ({ attributes, setAttributes, device, setDevice })
             <div style={{ marginTop: "10px" }}>
               <PanelRow>
                 <Label className='mb5'>{__("Border Width", 'b-feature-lists')}</Label>
-                <Device onChange={val => setDevice(val)} />
+                <Device />
               </PanelRow>
               <BBoxControl
                 values={contentBox.hoverBorder.width[device]}
@@ -95,7 +97,7 @@ const HoverContentBoxStyles = ({ attributes, setAttributes, device, setDevice })
       <div style={{ marginTop: "10px" }}>
         <PanelRow>
           <Label className='mb5'>{__("Border Radius", 'b-feature-lists')}</Label>
-          <Device onChange={val => setDevice(val)} />
+          <Device />
         </PanelRow>
         <BBoxControl
           values={contentBox.hoverBorderRadius[device]}
@@ -133,6 +135,6 @@ const HoverContentBoxStyles = ({ attributes, setAttributes, device, setDevice })
 
     </div>
   );
-};
+})
 
 export default HoverContentBoxStyles;

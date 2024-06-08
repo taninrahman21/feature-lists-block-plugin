@@ -8,8 +8,10 @@ import NormalContentBoxStyles from './NormalContentBoxStyles';
 import { BBoxControl } from '../../../Panel/BBoxControl/BBoxControl';
 import { Label } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
-const ContentBox = ({ attributes, setAttributes, device, setDevice }) => {
+const ContentBox = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { contentBox } = attributes;
 
   return (
@@ -20,7 +22,7 @@ const ContentBox = ({ attributes, setAttributes, device, setDevice }) => {
         <div style={{ marginTop: "10px" }}>
           <PanelRow>
             <Label className='mb5'>{__("Padding", 'b-feature-lists')}</Label>
-            <Device onChange={val => setDevice(val)} />
+            <Device />
           </PanelRow>
           <BBoxControl
             values={contentBox.padding[device]}
@@ -44,12 +46,12 @@ const ContentBox = ({ attributes, setAttributes, device, setDevice }) => {
 
             {/* Normal Background Content */}
             <div className={`content-box-style-tab-item ${contentBox.contentBoxStyleFor === 'normal' ? 'activeContentBoxStyleFor' : ''}`}>
-              <NormalContentBoxStyles attributes={attributes} setAttributes={setAttributes} device={device} setDevice={setDevice} />
+              <NormalContentBoxStyles attributes={attributes} setAttributes={setAttributes}/>
             </div>
 
             {/* Hover Background Content */}
             <div className={`content-box-style-tab-item ${contentBox.contentBoxStyleFor === 'hover' ? 'activeContentBoxStyleFor' : ''}`}>
-              <HoverContentBoxStyles attributes={attributes} setAttributes={setAttributes} device={device} setDevice={setDevice} />
+              <HoverContentBoxStyles attributes={attributes} setAttributes={setAttributes}/>
             </div>
 
           </div>
@@ -57,6 +59,6 @@ const ContentBox = ({ attributes, setAttributes, device, setDevice }) => {
       </PanelBody>
     </div>
   );
-};
+});
 
 export default ContentBox;

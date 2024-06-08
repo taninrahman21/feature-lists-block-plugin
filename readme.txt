@@ -1,5 +1,5 @@
 === B Feature Lists ===
-Contributors: abuhayat, taninrahman21
+Contributors: abuhayat
 Donate link: https://gum.co/wpdonate/
 Tags: block, Gutenberg block, Feature Lists, feature table
 Requires at least: 5.0+
