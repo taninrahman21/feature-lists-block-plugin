@@ -1,12 +1,13 @@
 // BFeatureLists Styles
+.items-container {
+  position: relative;
+}
 .feature-item {
   display: flex;
-  position: relative;
 }
 
 .feature-icon {
   background: orange;
-  position: relative;
   z-index: 999;
 }
 
@@ -23,11 +24,10 @@
   padding: 0;
   margin: 0;
 }
-.line {
+.connector-line {
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 100%;
+  z-index: 2;
 }
 
 // Content CSS Starts Here

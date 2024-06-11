@@ -1,21 +1,22 @@
 import React from "react";
 import {
   getBackgroundCSS,
-  getBoxCSS,
   getShadowCSS,
   getTypoCSS,
 } from "../../../../Components/utils/getCSS";
+import { getBorderCSS, getBorderRadiusCSS, getBoxCss } from "../../utils/functions";
 
 const Styles = ({ attributes }) => {
   const { cId, items, valueForEachItem, itemStyles, iconStyle, title, description, contentBox } = attributes;
   const { iconShape, iconPosition, iconVerticallyCenter, useInlineFeatures, itemsPerLine, gapBetweenItem, showConnectorLine, connectorLineColor, connectorLineWidth, showIcon } = valueForEachItem;
   const { spaceBetweenItem, borderRadius, border, addBorder, padding, backgroundColor } = itemStyles;
+  const styleRef = React.useRef()
 
   const mainWrapper = `#main-wrapper-${cId}`;
+  const connectionLine = `${mainWrapper} .connector-line`;
   const itemsContainer = `${mainWrapper} .items-container`;
   const item = `${itemsContainer} .feature-item`;
   const featureIcon = `${item} .feature-icon`;
-  const connectionLine = `${featureIcon} .line`;
   const content = `${item} .feature-content`;
   const featureTitle = `${content} .title`;
   const featureDescription = `${content} .description`;
@@ -23,7 +24,7 @@ const Styles = ({ attributes }) => {
 
   return (
     <>
-      <style>
+      <style ref={styleRef} >
         {` 
 
         ${getTypoCSS("", title.typo)?.googleFontLink}
@@ -60,7 +61,7 @@ const Styles = ({ attributes }) => {
             ${iconVerticallyCenter ? "align-items: center;" : "align-items: flex-start;"};
             margin-bottom: ${!useInlineFeatures ? `${spaceBetweenItem.desktop}px` : undefined};
             ${addBorder && `border: ${border.width} ${border.style} ${border.color};`};
-            padding: ${getBoxCSS(padding.desktop)};
+             ${getBoxCss(padding.desktop, "padding")}
             border-radius: ${borderRadius}px;
             ${getBackgroundCSS(backgroundColor)};
           }
@@ -69,8 +70,10 @@ const Styles = ({ attributes }) => {
           }
          
           ${featureIcon} {
-            border: ${iconStyle.border.width} ${iconStyle.border.style} ${iconStyle.border.color};
-            border-radius: ${iconStyle.borderRadius}px;
+            ${getBorderCSS(iconStyle.borderControl)}
+            height: ${iconStyle.iconDivSize.desktop}px;
+            width: ${iconStyle.iconDivSize.desktop}px;
+            ${getBorderRadiusCSS(iconStyle.borderRadius)}
             ${iconShape === "rhombus" && "transform: rotate(45deg);"};
             ${iconShape === "circle" && "border-radius: 50%;"};
             ${iconShape === "none" && "border: none;"};
@@ -78,10 +81,8 @@ const Styles = ({ attributes }) => {
             justify-content: center;
             align-items: center;
             transition: transform 0.5s linear;
-            padding: ${getBoxCSS(iconStyle.padding.desktop)};
+            ${getBoxCss(iconStyle.padding.desktop, "padding")}
             ${getBackgroundCSS(iconStyle.normalBackground)};
-            height: ${iconStyle.iconDivSize.desktop}px;
-            width: ${iconStyle.iconDivSize.desktop}px;
             ${iconPosition === "left" && `margin-right:  ${iconStyle.spaceFromContent.desktop}px`};
             ${iconPosition === "right" && `margin-left: ${iconStyle.spaceFromContent.desktop}px;`};
             ${iconPosition === "center" && `margin-bottom: ${iconStyle.spaceFromContent.desktop}px;`};
@@ -106,7 +107,7 @@ const Styles = ({ attributes }) => {
             fill: ${iconStyle.iconColor};
           }
           ${featureIcon}:hover .img-icon svg {
-            fill: ${iconStyle.hoverIconColor};
+            fill: ${iconStyle.iconColorHover};
           }
 
           ${featureTitle} {
@@ -125,9 +126,9 @@ const Styles = ({ attributes }) => {
              ${getBackgroundCSS(contentBox.normalBackground)};
             border-color: ${contentBox.normalBorder.color};
             border-style: ${contentBox.normalBorder.style};
-            border-width: ${getBoxCSS(contentBox.normalBorder.width.desktop)};
-            padding: ${getBoxCSS(contentBox.padding.desktop)};
-            border-radius: ${getBoxCSS(contentBox.normalBorderRadius.desktop)};
+            ${getBoxCss(contentBox.normalBorder.width.desktop, "border-width")}
+            ${getBoxCss(contentBox.padding.desktop, "padding")}
+            ${getBorderRadiusCSS(contentBox.normalBorderRadius.desktop)}
             transition: box-shadow ${contentBox.boxShadowTransition}s, border-radius ${contentBox.borderRadiusTransition}s, background-color ${contentBox.backgroundTransition}s, border-color ${contentBox.borderTransition}s, border-width ${contentBox.borderTransition}s, border-style ${contentBox.borderTransition}s;
             box-shadow: ${getShadowCSS(contentBox.boxShadowNormal)};
           }
@@ -135,8 +136,8 @@ const Styles = ({ attributes }) => {
              ${getBackgroundCSS(contentBox.hoverBackground)};
             border-color: ${contentBox.hoverBorder.color};
             border-style: ${contentBox.hoverBorder.style};
-            border-width: ${getBoxCSS(contentBox.hoverBorder.width.desktop)};
-            border-radius: ${getBoxCSS(contentBox.hoverBorderRadius.desktop)};
+            ${getBoxCss(contentBox.hoverBorder.width.desktop, "border-width")}
+            ${getBorderRadiusCSS(contentBox.hoverBorderRadius.desktop)}
             box-shadow: ${getShadowCSS(contentBox.boxShadowHover)};
             cursor: pointer;
           }
@@ -145,9 +146,11 @@ const Styles = ({ attributes }) => {
             display: ${!(iconPosition === "center") && !(useInlineFeatures) && showConnectorLine ? "block" : "none"};
             width: ${connectorLineWidth}px;
             background-color: ${connectorLineColor};
-            height: calc(${padding.desktop.bottom}  + ${spaceBetweenItem.desktop}px + ${padding.desktop.top} + ${contentBox.padding.desktop.bottom ? contentBox.padding.desktop.bottom : "0px"} + (${contentBox.padding.desktop.top ? `calc(${contentBox.padding.desktop.top} - 5px)` : "0px"}) + 5px);
+            left: calc(${iconStyle.iconDivSize.desktop / 2}px + ${padding.desktop.left} + ${iconStyle.padding.desktop.left} + ${iconShape !== 'none' ? iconStyle.border.width : '0px'});
+            transform: translateX(-50%);
+            top: ${padding.desktop.top};
+            height: calc(100% - ${padding.desktop.top} - ${padding.desktop.bottom});
           }
-
 
        @media only screen and (max-width:640px){
          ${itemsContainer} {
@@ -156,13 +159,13 @@ const Styles = ({ attributes }) => {
          }
           ${item}{
           margin-bottom: ${spaceBetweenItem.mobile}px;
-          padding: ${getBoxCSS(padding.mobile)};
+          ${getBoxCss(padding.mobile, "padding")}
          }
           ${featureTitle} {
             margin-bottom: ${title.bottomSpace.mobile}px;
           }
           ${featureIcon} {
-            padding: ${getBoxCSS(iconStyle.padding.mobile)};
+            ${getBoxCss(iconStyle.padding.mobile, "padding")}
             height: ${iconStyle.iconDivSize.mobile}px;
             width: ${iconStyle.iconDivSize.mobile}px;
             ${iconPosition === "left" && `margin-right:  ${iconStyle.spaceFromContent.mobile}px`};
@@ -174,13 +177,13 @@ const Styles = ({ attributes }) => {
             width: ${iconStyle.iconSize.mobile}px;
           }
           ${content} {
-            border-width: ${getBoxCSS(contentBox.normalBorder.width.mobile)};
-            padding: ${getBoxCSS(contentBox.padding.mobile)};
-            border-radius: ${getBoxCSS(contentBox.normalBorderRadius.mobile)};
+            ${getBoxCss(contentBox.normalBorder.width.mobile, "border-width")}
+            ${getBoxCss(contentBox.padding.mobile, "padding")}
+            ${getBorderRadiusCSS(contentBox.normalBorderRadius.mobile)}
             }
           ${content}:hover {
-            border-width: ${getBoxCSS(contentBox.hoverBorder.width.mobile)};
-            border-radius: ${getBoxCSS(contentBox.hoverBorderRadius.mobile)};
+            ${getBoxCss(contentBox.hoverBorder.width.mobile, "border-width")}
+            ${getBorderRadiusCSS(contentBox.hoverBorderRadius.mobile)}
           }
       }
 
@@ -192,13 +195,13 @@ const Styles = ({ attributes }) => {
          }
           ${item}{
           margin-bottom: ${spaceBetweenItem.tablet}px;
-          padding: ${getBoxCSS(padding.tablet)};
+          ${getBoxCss(padding.tablet, "padding")}
          }
           ${featureTitle} {
             margin-bottom: ${title.bottomSpace.tablet}px;
           }
            ${featureIcon} {
-            padding: ${getBoxCSS(iconStyle.padding.tablet)};
+            ${getBoxCss(iconStyle.padding.tablet, "padding")}
             height: ${iconStyle.iconDivSize.tablet}px;
             width: ${iconStyle.iconDivSize.tablet}px;
             ${iconPosition === "left" && `margin-right:  ${iconStyle.spaceFromContent.tablet}px`};
@@ -210,13 +213,13 @@ const Styles = ({ attributes }) => {
             width: ${iconStyle.iconSize.tablet}px;
           }
            ${content} {
-            border-width: ${getBoxCSS(contentBox.normalBorder.width.tablet)};
-            padding: ${getBoxCSS(contentBox.padding.tablet)};
-            border-radius: ${getBoxCSS(contentBox.normalBorderRadius.tablet)};
+            ${getBoxCss(contentBox.normalBorder.width.tablet, "border-width")}
+            ${getBoxCss(contentBox.padding.tablet, "padding")}
+            ${getBorderRadiusCSS(contentBox.normalBorderRadius.tablet)}
             }
           ${content}:hover {
-            border-width: ${getBoxCSS(contentBox.hoverBorder.width.tablet)};
-            border-radius: ${getBoxCSS(contentBox.hoverBorderRadius.tablet)};
+            ${getBoxCss(contentBox.hoverBorder.width.tablet, "border-width")}
+            ${getBorderRadiusCSS(contentBox.hoverBorderRadius.tablet)}
           }
       }
         

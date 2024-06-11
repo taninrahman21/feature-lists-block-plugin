@@ -5,9 +5,9 @@ import { __ } from "@wordpress/i18n";
 import React from 'react';
 import { Label } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
+import { BBoxControl } from '../../../../Panel/BBoxControl/BBoxControl';
 import '../../../../editor.scss';
 import { updateData } from '../../../../utils/functions';
-import { BBoxControl } from '../../../Panel/BBoxControl/BBoxControl';
 import HoverContentBoxStyles from './HoverContentBoxStyles';
 import NormalContentBoxStyles from './NormalContentBoxStyles';
 

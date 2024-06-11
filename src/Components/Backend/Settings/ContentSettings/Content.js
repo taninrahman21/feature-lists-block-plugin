@@ -7,7 +7,7 @@ import { GrDuplicate } from "react-icons/gr";
 import { BColor } from '../../../../../../Components';
 import '../../../../editor.scss';
 import { updateData } from '../../../../utils/functions';
-import { MediaArea } from '../../../Panel/MediaArea/MediaArea';
+import { MediaArea } from '../../../../Panel/MediaArea/MediaArea';
 import UseInlineFeatureLists from './UseInlineFeatureLists';
 import UploadIcon from './uploadIcon';
 

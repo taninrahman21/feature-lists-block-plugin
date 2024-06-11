@@ -7,7 +7,7 @@ import React from 'react';
 import { BColor, Background, Label, ShadowControl } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
-import { BBoxControl } from '../../../Panel/BBoxControl/BBoxControl';
+import { BBoxControl } from '../../../../../../Components/BBoxControl/BBoxControl';
 
 const NormalContentBoxStyles = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { contentBox } = attributes;

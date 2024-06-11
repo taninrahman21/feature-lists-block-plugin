@@ -1,12 +1,13 @@
-import { __experimentalBorderControl as BorderControl, PanelBody, PanelRow, RangeControl } from '@wordpress/components';
+import { PanelBody, PanelRow, RangeControl } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
-import { BColor, Background, Label } from '../../../../../../Components';
-import { BBoxControl } from '../../../../../../Components/BBoxControl/BBoxControl';
+import { BColor, Label, Background } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
+import { BBoxControl } from '../../../../../../Components/BBoxControl/BBoxControl';
 import { updateData } from '../../../../utils/functions';
+import BorderControl from '../../../../Panel/BorderControl/BorderControl';
 
 
 
@@ -77,16 +78,16 @@ const Icon = compose(withSelect((select) => { return { device: select("core/edit
         {/* Icon Div Border */}
         <div style={{ margin: "15px 0" }} >
           <BorderControl
-            label={__("Border", "feature-lists")}
-            colors={colors}
-            onChange={value => setAttributes({ iconStyle: updateData(iconStyle, value, "border") })}
-            value={iconStyle.border}
+            label={__('Border:', 'feature-lists')}
+            value={iconStyle.borderControl}
+            onChange={val => setAttributes({ iconStyle: updateData(iconStyle, val, "borderControl") })}
           />
+
           <div style={{ margin: "10px 0" }}>
-            <RangeControl
+            <BBoxControl
               label={__("Border Radius", "feature-lists")}
-              value={iconStyle.borderRadius}
-              onChange={value => setAttributes({ iconStyle: updateData(iconStyle, value, "borderRadius") })}
+              values={iconStyle.borderRadius}
+              onChange={val => setAttributes({ iconStyle: updateData(iconStyle, val, "borderRadius") })}
             />
           </div>
         </div>
