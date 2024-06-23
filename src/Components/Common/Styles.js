@@ -146,7 +146,9 @@ const Styles = ({ attributes }) => {
             display: ${!(iconPosition === "center") && !(useInlineFeatures) && showConnectorLine ? "block" : "none"};
             width: ${connectorLineWidth}px;
             background-color: ${connectorLineColor};
-            left: calc(${iconStyle.iconDivSize.desktop / 2}px + ${padding.desktop.left} + ${iconStyle.padding.desktop.left} + ${iconShape !== 'none' ? iconStyle.border.width : '0px'});
+            ${iconPosition === "right" && `right: calc(${iconStyle.iconDivSize.desktop / 2}px + ${padding.desktop.left} + ${iconStyle.padding.desktop.left} + ${iconShape !== 'none' ? `${iconStyle.borderControl.width}` : '0px'});`};
+            transform: translateX(-50%);
+            ${iconPosition === "left" && `left: calc(${iconStyle.iconDivSize.desktop / 2}px + ${padding.desktop.left} + ${iconStyle.padding.desktop.left} + ${iconShape !== 'none' ? `${iconStyle.borderControl.width}` : '0px'});`};
             transform: translateX(-50%);
             top: ${padding.desktop.top};
             height: calc(100% - ${padding.desktop.top} - ${padding.desktop.bottom});

@@ -4,6 +4,7 @@
 }
 .feature-item {
   display: flex;
+  width: 100%;
 }
 
 .feature-icon {
@@ -13,7 +14,7 @@
 
 .feature-content {
   margin-left: 10px;
-  width: 75%;
+  width: 100%;
 }
 .feature-content p {
   margin: 0;

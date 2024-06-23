@@ -2,200 +2,217 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: B Feature Lists 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/feature-lists\n"
+"Project-Id-Version: Feature Lists 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/b-feature-lists\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-04T06:36:29+00:00\n"
+"POT-Creation-Date: 2024-06-11T14:38:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: feature-lists\n"
 
 #. Plugin Name of the plugin
-#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\feature-lists\feature-lists.php
-msgid "B Feature Lists"
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\feature-lists.php
+msgid "Feature Lists"
 msgstr ""
 
 #. Description of the plugin
-#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\feature-lists\feature-lists.php
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\feature-lists.php
 msgid "The Feature Lists WordPress Block Plugin provides an intuitive and flexible way to showcase features in a visually appealing list format.Designed for ease of use within the Gutenberg editor, this plugin enables users to create and customize feature lists with icons, titles, and descriptions effortlessly."
 msgstr ""
 
 #. Author of the plugin
-#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\feature-lists\feature-lists.php
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\feature-lists.php
 msgid "bPlugins LLC"
 msgstr ""
 
 #. Author URI of the plugin
-#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\feature-lists\feature-lists.php
+#: D:\xampp\htdocs\tanin-rahman\wp-content\plugins\b-feature-lists\feature-lists.php
 msgid "http://bplugins.com"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:19889
-#: dist/editor.js:19903
-#: dist/editor.js:21205
+#: dist/editor.js:10
+#: dist/editor.js:23342
+#: dist/editor.js:23356
+#: dist/editor.js:24865
 msgid "Space Between Item"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20031
-#: dist/editor.js:20394
+#: dist/editor.js:10
+#: dist/editor.js:23516
+#: dist/editor.js:23966
 msgid "Title"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20042
+#: dist/editor.js:10
+#: dist/editor.js:23527
 msgid "description"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20087
-#: dist/editor.js:20596
-#: dist/editor.js:20733
-#: dist/editor.js:21218
+#: dist/editor.js:10
+#: dist/editor.js:23591
+#: dist/editor.js:24708
+msgid "Icon Color"
+msgstr ""
+
+#: dist/editor.js:10
+#: dist/editor.js:23603
+#: dist/editor.js:23632
+#: dist/editor.js:24313
+#: dist/editor.js:24452
+#: dist/editor.js:24879
 msgid "Background Color"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20099
-#: dist/editor.js:21091
+#: dist/editor.js:10
+#: dist/editor.js:23615
+#: dist/editor.js:23644
+#: dist/editor.js:24748
 msgid "Hover Background Color"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20166
+#: dist/editor.js:10
+#: dist/editor.js:23710
 msgid "Add New Feature"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20174
+#: dist/editor.js:10
+#: dist/editor.js:23718
 msgid "Title HTML Tag"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20192
+#: dist/editor.js:10
+#: dist/editor.js:23750
 msgid "Icon Shape"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20250
-#: dist/editor.js:20304
+#: dist/editor.js:10
+#: dist/editor.js:23811
+#: dist/editor.js:23865
 msgid "Connector Line Color"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20260
-#: dist/editor.js:20314
+#: dist/editor.js:10
+#: dist/editor.js:23821
+#: dist/editor.js:23875
 msgid "Connector Line Width"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20363
+#: dist/editor.js:10
+#: dist/editor.js:23933
 msgid "Description"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20366
-#: dist/editor.js:20412
+#: dist/editor.js:10
+#: dist/editor.js:23936
+#: dist/editor.js:23984
 msgid "Color"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20373
-#: dist/editor.js:20426
+#: dist/editor.js:10
+#: dist/editor.js:23943
+#: dist/editor.js:23998
 msgid "Typography"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20399
+#: dist/editor.js:10
+#: dist/editor.js:23971
 msgid "Title Bottom Space"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20419
+#: dist/editor.js:10
+#: dist/editor.js:23991
 msgid "Hover Color"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20605
+#: dist/editor.js:10
+#: dist/editor.js:24322
 msgid "Background Transition"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20615
-#: dist/editor.js:20742
+#: dist/editor.js:10
+#: dist/editor.js:24332
+#: dist/editor.js:24461
 msgid "Border Style"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20638
-#: dist/editor.js:20765
+#: dist/editor.js:10
+#: dist/editor.js:24355
+#: dist/editor.js:24484
 msgid "Border Color"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20646
-#: dist/editor.js:20773
+#: dist/editor.js:10
+#: dist/editor.js:24363
+#: dist/editor.js:24492
 msgid "Border Width"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20662
+#: dist/editor.js:10
+#: dist/editor.js:24379
 msgid "Border Transition"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20676
-#: dist/editor.js:20793
-#: dist/editor.js:21112
-#: dist/editor.js:21246
+#: dist/editor.js:10
+#: dist/editor.js:24393
+#: dist/editor.js:24512
+#: dist/editor.js:24769
+#: dist/editor.js:24907
 msgid "Border Radius"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20687
+#: dist/editor.js:10
+#: dist/editor.js:24404
 msgid "Border Radius Transition"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20697
-#: dist/editor.js:20805
+#: dist/editor.js:10
+#: dist/editor.js:24414
+#: dist/editor.js:24524
 msgid "Box Shadow"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20704
+#: dist/editor.js:10
+#: dist/editor.js:24421
 msgid "Box Shadow Transition"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20832
+#: dist/editor.js:10
+#: dist/editor.js:24553
 msgid "Content Box"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:20837
+#: dist/editor.js:10
+#: dist/editor.js:24558
 msgid "Padding"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:21080
+#: dist/editor.js:10
+#: dist/editor.js:24714
+msgid "Hover Icon Color"
+msgstr ""
+
+#: dist/editor.js:10
+#: dist/editor.js:24737
 msgid "Normal Background Color"
 msgstr ""
 
-#: dist/editor.js:1
-#: dist/editor.js:21105
-#: dist/editor.js:21238
+#: dist/editor.js:10
+#: dist/editor.js:24762
+msgid "Border:"
+msgstr ""
+
+#: dist/editor.js:10
+#: dist/editor.js:24899
 msgid "Border"
 msgstr ""
 
 #: inc/block.json
 msgctxt "block title"
-msgid "B Feature Lists"
+msgid "Feature Lists"
 msgstr ""
 
 #: inc/block.json
@@ -205,12 +222,7 @@ msgstr ""
 
 #: inc/block.json
 msgctxt "block keyword"
-msgid "hello"
-msgstr ""
-
-#: inc/block.json
-msgctxt "block keyword"
-msgid "block"
+msgid "features"
 msgstr ""
 
 #: inc/block.json
