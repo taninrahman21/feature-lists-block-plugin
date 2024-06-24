@@ -7,6 +7,8 @@ import { updateData } from '../../../../utils/functions';
 const Description = ({ attributes, setAttributes }) => {
   const { description } = attributes;
 
+  
+
   return (
     <div>
       <PanelBody title={__('Description', "feature-lists")} initialOpen={false}>

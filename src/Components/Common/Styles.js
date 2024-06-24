@@ -150,8 +150,8 @@ const Styles = ({ attributes }) => {
             transform: translateX(-50%);
             ${iconPosition === "left" && `left: calc(${iconStyle.iconDivSize.desktop / 2}px + ${padding.desktop.left} + ${iconStyle.padding.desktop.left} + ${iconShape !== 'none' ? `${iconStyle.borderControl.width}` : '0px'});`};
             transform: translateX(-50%);
-            top: ${padding.desktop.top};
-            height: calc(100% - ${padding.desktop.top} - ${padding.desktop.bottom});
+            top: ${iconStyle.iconDivSize.desktop}px;
+            height: calc(100% - ${padding.desktop.top} - ${iconStyle.iconDivSize.desktop * 2}px);
           }
 
        @media only screen and (max-width:640px){

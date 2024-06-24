@@ -9,6 +9,7 @@ import { updateData } from '../../../../utils/functions';
 
 const Title = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { title } = attributes;
+
   return (
     <div>
       <PanelBody title={__('Title', "feature-lists")} initialOpen={false}>

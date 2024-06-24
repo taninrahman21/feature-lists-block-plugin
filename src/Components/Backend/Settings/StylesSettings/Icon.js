@@ -14,7 +14,7 @@ import BorderControl from '../../../../Panel/BorderControl/BorderControl';
 const Icon = compose(withSelect((select) => { return { device: select("core/edit-post").__experimentalGetPreviewDeviceType()?.toLowerCase() } }))(({ attributes, setAttributes, device }) => {
   const { iconStyle } = attributes;
   
-  console.log(iconStyle.borderControl)
+  
 
   return (
     <div>
